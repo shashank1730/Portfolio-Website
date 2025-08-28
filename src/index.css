@@ -1,0 +1,190 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Sketch-style notebook portfolio design system */
+
+@layer base {
+  :root {
+    /* Notebook color palette */
+    --background: 42 20% 97%; /* Warm cream paper */
+    --foreground: 220 15% 15%; /* Charcoal ink */
+
+    --card: 42 25% 98%; /* Slightly warmer white */
+    --card-foreground: 220 15% 15%;
+
+    --popover: 42 25% 98%;
+    --popover-foreground: 220 15% 15%;
+
+    /* Bold highlighter accent - vibrant orange */
+    --primary: 25 95% 65%; /* Bright orange highlighter */
+    --primary-foreground: 42 25% 98%;
+
+    /* Sketch pencil grays */
+    --secondary: 220 8% 88%; /* Light pencil sketch */
+    --secondary-foreground: 220 15% 15%;
+
+    --muted: 220 8% 92%; /* Very light sketch */
+    --muted-foreground: 220 10% 45%; /* Medium pencil */
+
+    --accent: 200 60% 75%; /* Soft sketch blue */
+    --accent-foreground: 220 15% 15%;
+
+    --destructive: 0 75% 60%;
+    --destructive-foreground: 42 25% 98%;
+
+    --border: 220 8% 85%; /* Sketch line color */
+    --input: 220 8% 90%;
+    --ring: 25 95% 65%; /* Match primary */
+
+    --radius: 0.75rem; /* Slightly more rounded for organic feel */
+
+    /* Custom sketch tokens */
+    --sketch-light: 220 8% 95%; /* Very light sketch lines */
+    --sketch-medium: 220 10% 75%; /* Medium sketch shading */
+    --sketch-dark: 220 15% 25%; /* Dark sketch lines */
+    
+    /* Gradients */
+    --gradient-paper: linear-gradient(135deg, hsl(42 25% 98%), hsl(42 20% 96%));
+    --gradient-sketch: linear-gradient(90deg, hsl(25 95% 65%), hsl(35 90% 70%));
+    
+    /* Shadows for that lifted paper feel */
+    --shadow-sketch: 0 4px 6px -1px hsl(220 15% 15% / 0.1), 0 2px 4px -1px hsl(220 15% 15% / 0.06);
+    --shadow-hover: 0 8px 25px -5px hsl(25 95% 65% / 0.3);
+    
+    /* Animation curves */
+    --ease-sketch: cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Patrick Hand', cursive;
+    background: var(--gradient-paper);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Caveat', cursive;
+    font-weight: 600;
+  }
+}
+
+@layer components {
+  /* Sketch-style button variants */
+  .btn-sketch {
+    @apply relative px-6 py-3 border-2 border-foreground bg-transparent text-foreground rounded-lg;
+    @apply hover:bg-primary hover:text-primary-foreground hover:border-primary;
+    @apply transition-all duration-300;
+    @apply shadow-[2px_2px_0px_0px_hsl(var(--foreground))];
+    @apply hover:shadow-[4px_4px_0px_0px_hsl(var(--primary))];
+    @apply hover:translate-x-[-2px] hover:translate-y-[-2px];
+    font-family: 'Caveat', cursive;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+
+  .btn-sketch-primary {
+    @apply bg-primary border-primary text-primary-foreground;
+    @apply shadow-[2px_2px_0px_0px_hsl(var(--sketch-dark))];
+    @apply hover:shadow-[4px_4px_0px_0px_hsl(var(--sketch-dark))];
+  }
+
+  /* Sketch-style borders and dividers */
+  .sketch-border {
+    @apply relative;
+  }
+  
+  .sketch-border::before {
+    content: '';
+    @apply absolute inset-0 border-2 border-dashed border-border rounded-lg;
+    transform: rotate(-0.5deg);
+  }
+
+  .sketch-divider {
+    @apply w-full h-px bg-gradient-to-r from-transparent via-border to-transparent my-8;
+    position: relative;
+  }
+
+  .sketch-divider::after {
+    content: '✦';
+    @apply absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2;
+    @apply bg-background px-4 text-muted-foreground;
+    font-family: 'Caveat', cursive;
+    font-size: 1.2rem;
+  }
+
+  /* Sketch-style cards */
+  .sketch-card {
+    @apply bg-card border-2 border-border rounded-lg p-6;
+    @apply shadow-[3px_3px_0px_0px_hsl(var(--border))];
+    @apply hover:shadow-[6px_6px_0px_0px_hsl(var(--primary))] hover:border-primary;
+    @apply transition-all duration-300;
+    @apply hover:translate-x-[-3px] hover:translate-y-[-3px];
+    transform: rotate(-0.2deg);
+  }
+
+  .sketch-card:nth-child(even) {
+    transform: rotate(0.2deg);
+  }
+
+  /* Handwritten underline effect */
+  .sketch-underline {
+    @apply relative;
+  }
+
+  .sketch-underline::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-full h-1 bg-primary opacity-30;
+    border-radius: 50px;
+    transform: scaleX(0) rotate(-1deg);
+    transform-origin: left;
+    transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .sketch-underline:hover::after {
+    transform: scaleX(1) rotate(-1deg);
+  }
+}
