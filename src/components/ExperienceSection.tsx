@@ -3,20 +3,6 @@ import { Briefcase, GraduationCap, Award, ArrowRight } from "lucide-react";
 const ExperienceSection = () => {
   const experiences = [
     {
-      type: 'education',
-      title: 'Master of Science in Computer Science',
-      company: 'University of Texas at Arlington',
-      period: 'Aug 2023 - May 2025',
-      location: 'Arlington, TX',
-      description: 'Currently pursuing advanced coursework in AI/ML, data structures, and distributed systems with a perfect 4.0/4.0 CGPA.',
-      achievements: [
-        'Maintaining perfect 4.0/4.0 CGPA in advanced CS coursework',
-        'Focusing on GenAI, Machine Learning, and Software Engineering',
-        'Expected graduation: May 2025'
-      ],
-      icon: <GraduationCap className="h-6 w-6" />
-    },
-    {
       type: 'work',
       title: 'AI Engineer',
       company: 'Infoshare Systems Inc.',
@@ -32,6 +18,21 @@ const ExperienceSection = () => {
       ],
       icon: <Briefcase className="h-6 w-6" />
     },
+    {
+      type: 'education',
+      title: 'Master of Science in Computer Science',
+      company: 'University of Texas at Arlington',
+      period: 'Aug 2023 - May 2025',
+      location: 'Arlington, TX',
+      description: 'Pursued advanced coursework in AI/ML, data structures, and distributed systems with a perfect 4.0/4.0 CGPA.',
+      achievements: [
+        'Maintaining perfect 4.0/4.0 CGPA in advanced CS coursework',
+        'Focusing on GenAI, Machine Learning, and Software Engineering',
+        'Expected graduation: May 2025'
+      ],
+      icon: <GraduationCap className="h-6 w-6" />
+    },
+
     {
       type: 'work',
       title: 'Software Developer - Intern',
