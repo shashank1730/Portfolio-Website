@@ -1,98 +1,148 @@
-import { Coffee, Code, Heart, MapPin } from "lucide-react";
+import { Compass, Sparkles, Rocket, MapPin, Workflow, Users, Target } from "lucide-react";
+import { site } from "@/lib/site";
 import sketchAvatar from "@/assets/sketch-avatar.jpg";
+
 const AboutSection = () => {
-  const quickFacts = [{
-    icon: <Code className="h-5 w-5" />,
-    label: "Favorite Stack",
-    value: "React + FastAPI + RAG/LLMs"
-  }, {
-    icon: <Coffee className="h-5 w-5" />,
-    label: "Currently Learning",
-    value: "LangGraph & Agentic AI"
-  }, {
-    icon: <Heart className="h-5 w-5" />,
-    label: "Experience",
-    value: "5+ Years Development"
-  }, {
-    icon: <MapPin className="h-5 w-5" />,
-    label: "Based In",
-    value: "Arlington, TX"
-  }];
-  return <section className="py-20 px-4">
-      <div className="container mx-auto max-w-6xl">
+  const quickFacts = [
+    {
+      icon: <Compass className="h-5 w-5" />,
+      label: "Beyond the Stack",
+      value: "The 'favorite stack' era is over — I think product first, tools second.",
+    },
+    {
+      icon: <Sparkles className="h-5 w-5" />,
+      label: "Currently",
+      value: "Going 100% AI-Native",
+    },
+    {
+      icon: <Rocket className="h-5 w-5" />,
+      label: "What I Do",
+      value: "Ship production AI products, end-to-end",
+    },
+    {
+      icon: <MapPin className="h-5 w-5" />,
+      label: "Based In",
+      value: site.location,
+    },
+  ];
+
+  const playground = [
+    "Cursor", "Claude Code", "Codex", "Langfuse", "OpenAI", "Hermes Agent",
+    "LangGraph", "LangChain", "RAG", "FastAPI", "React.js", "Next.js",
+    "Ollama", "ChromaDB", "Evals", "AWS", "Groq", "Pydantic",
+  ];
+
+  const principles = [
+    {
+      icon: <Users className="h-5 w-5" />,
+      title: "User-close engineering",
+      copy: "I stay near the operators, underwriters, recruiters, and loan teams who live with the workflow every day.",
+    },
+    {
+      icon: <Workflow className="h-5 w-5" />,
+      title: "Agents with guardrails",
+      copy: "The interesting part is not a prompt. It is orchestration, retrieval, evals, feedback loops, and ownership.",
+    },
+    {
+      icon: <Target className="h-5 w-5" />,
+      title: "Product > stack",
+      copy: "The stack is only useful if it makes the product faster, clearer, cheaper, and easier to trust.",
+    },
+  ];
+
+  return (
+    <section className="py-24 px-4">
+      <div className="section-shell">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-5xl font-sketch font-bold mb-4 sketch-underline">
-            About Me
+          <span className="eyebrow mb-4">About Me</span>
+          <h2 className="text-5xl md:text-6xl font-display font-bold mt-4">
+            The story behind the code
           </h2>
-          <div className="sketch-divider" />
+          <div className="sketch-divider max-w-md mx-auto" />
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12 items-start">
-          {/* Avatar and Story */}
-          <div className="space-y-8">
-            <div className="flex justify-center md:justify-start">
-              <div className="sketch-card w-64 h-64 p-4">
-                <img src={sketchAvatar} alt="Shashank Nallabothu - Sketch Avatar" className="w-full h-full object-cover rounded-lg" />
+        <div className="grid lg:grid-cols-12 gap-5">
+          <div className="bento-card lg:col-span-5 min-h-[420px] flex flex-col justify-between">
+            <div>
+              <div className="inline-flex rounded-full border-2 border-foreground px-3 py-1 text-xs font-bold uppercase tracking-wide">
+                Product-minded builder
               </div>
-            </div>
-            
-            <div className="sketch-card space-y-4">
-              <h3 className="text-2xl font-sketch font-semibold text-primary">
-                The Story Behind the Code
+              <h3 className="mt-6 text-5xl md:text-6xl font-display font-bold leading-none">
+                I turn messy operations into AI-native products.
               </h3>
-              <div className="space-y-4 text-lg leading-relaxed">
-                <p>
-                  Hey there! I'm Shashank, a passionate Full Stack AI Engineer with 5+ years of experience 
-                  creating AI-powered applications that solve real-world problems. I'm skilled in RAG pipelines, 
-                  LangChain/LangGraph, and deploying scalable LLM systems.
-                </p>
-                <p>Completed my Master's in Computer Science at UT Arlington with a perfect 4.0 GPA, I combine strong web development expertise (React, FastAPI) with a proven track record of improving efficiency and decision-making in HRTech, sales, and manufacturing domains.</p>
-                <p>
-                  From automating resume screening that cuts HR review time by 65% to building predictive 
-                  maintenance systems that reduce downtime by 30%, I love turning complex AI capabilities 
-                  into user-friendly solutions that make a real impact! 🚀
+            </div>
+            <p className="mt-8 text-lg leading-relaxed text-muted-foreground">
+              I sit close to the business problem, design the workflow, build the system,
+              evaluate the outputs, and keep iterating until the AI feels dependable enough
+              for real teams to use.
+            </p>
+          </div>
+
+          <div className="bento-card lg:col-span-3 p-4 bg-[#fbf8f0]">
+            <div className="relative h-full min-h-[360px] overflow-hidden rounded-[1.25rem] border-2 border-border bg-[#f6efe3]">
+              <img
+                src={sketchAvatar}
+                alt="Shashank Nallabothu"
+                className="h-full w-full object-cover grayscale"
+              />
+              <div className="absolute bottom-4 left-4 right-4 rounded-2xl border-2 border-border bg-card/95 p-4 shadow-sketch">
+                <p className="font-display text-2xl font-bold leading-none">{site.name}</p>
+                <p className="mt-1 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                  {site.role}
                 </p>
               </div>
             </div>
           </div>
 
-          {/* Quick Facts */}
-          <div className="space-y-6">
-            <h3 className="text-3xl font-sketch font-semibold text-center md:text-left mb-8">
-              Quick Facts About Me
-            </h3>
-            
-            <div className="grid gap-4">
-              {quickFacts.map((fact, index) => <div key={index} className="sketch-card flex items-center gap-4 p-6 hover:shadow-hover transition-all duration-300">
-                  <div className="p-3 rounded-full bg-primary/10 text-primary">
-                    {fact.icon}
-                  </div>
-                  <div>
-                    <p className="font-sketch text-sm text-muted-foreground">
-                      {fact.label}
-                    </p>
-                    <p className="font-handwritten text-lg font-semibold">
-                      {fact.value}
-                    </p>
-                  </div>
-                </div>)}
-            </div>
-            
-            {/* Tech Stack Highlight */}
-            <div className="sketch-card p-6 bg-primary/5 border-primary/20">
-              <h4 className="font-sketch text-xl font-semibold mb-4 text-primary">
-                My Playground 🛠️
-              </h4>
-              <div className="flex flex-wrap gap-2">
-                {['React.js', 'FastAPI', 'LangChain', 'LangGraph', 'RAG', 'OpenAI', 'AWS', 'ChromaDB'].map(tech => <span key={tech} className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-handwritten border border-primary/20">
-                    {tech}
-                  </span>)}
+          <div className="grid gap-5 lg:col-span-4">
+            {quickFacts.map((fact, index) => (
+              <div key={index} className="bento-card flex items-start gap-4 p-5">
+                <div className="p-3 rounded-xl border-2 border-foreground bg-card shrink-0">
+                  {fact.icon}
+                </div>
+                <div>
+                  <p className="text-xs uppercase tracking-wide text-muted-foreground font-semibold">
+                    {fact.label}
+                  </p>
+                  <p className="text-foreground font-semibold mt-1">{fact.value}</p>
+                </div>
               </div>
+            ))}
+          </div>
+
+          <div className="bento-card lg:col-span-7">
+            <h3 className="text-3xl font-display font-bold mb-5">Operating principles</h3>
+            <div className="grid md:grid-cols-3 gap-4">
+              {principles.map((principle) => (
+                <div key={principle.title} className="rounded-2xl border-2 border-border bg-secondary/40 p-5">
+                  <div className="mb-4 inline-flex rounded-xl border-2 border-foreground bg-card p-2">
+                    {principle.icon}
+                  </div>
+                  <h4 className="font-bold">{principle.title}</h4>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{principle.copy}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="bento-card lg:col-span-5 bg-card border-border">
+            <h3 className="text-3xl font-display font-bold mb-3 text-foreground">My Playground</h3>
+            <p className="mb-5 text-sm text-muted-foreground">
+              The stack changes fast. I keep the mindset product-first and use whatever makes the workflow ship.
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {playground.map((tech) => (
+                <span key={tech} className="chip">
+                  {tech}
+                </span>
+              ))}
             </div>
           </div>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default AboutSection;

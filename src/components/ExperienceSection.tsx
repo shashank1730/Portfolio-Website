@@ -1,143 +1,196 @@
-import { Briefcase, GraduationCap, Award, ArrowRight } from "lucide-react";
+import { Briefcase, GraduationCap, Award, MapPin, Download, BadgeCheck } from "lucide-react";
+import { site } from "@/lib/site";
 
 const ExperienceSection = () => {
   const experiences = [
     {
-      type: 'work',
-      title: 'AI Engineer',
-      company: 'Infoshare Systems Inc.',
-      period: 'May 2024 - Present',
-      location: 'Remote',
-      description: 'Building AI-powered solutions for HR automation and tender processing, significantly improving efficiency in screening and decision-making processes.',
+      type: "work",
+      title: "Forward Deployed AI Engineer",
+      company: "Addy AI, Inc.",
+      period: "Dec 2025 – Present",
+      location: "Detroit, MI",
+      description:
+        "Leading AI-driven mortgage loan processing — turning fuzzy lending rules into reliable, automated agent workflows.",
       achievements: [
-        'Automated screening of 1,000+ resumes per job posting using LangGraph and local LLMs, cutting HR review time by 65%',
-        'Built AI-powered web portal with NextJS enabling instant access to auto-generated fit scores and reports',
-        'Designed RAG-based retrieval system achieving 85% skill-match accuracy between resumes and job descriptions',
-        'Automated tender document processing reducing sales team review time by 70%',
-        'Deployed scalable solutions on AWS EC2 with S3 for secure storage'
+        "Led mortgage loan processing workflows integrating OCR, document classification, and checklist validation to automate loan readiness and borrower eligibility.",
+        "Built an automated prompt-tuning framework that enhances base prompts from structured user feedback, improving checklist accuracy.",
+        "Shipped custom AI agents per checklist type — users tweak business logic in plain language, which auto-generates structured prompts.",
+        "Owned end-to-end Evals across the pipeline (OCR → classification → checklist validation) for production-grade reliability.",
+        "Optimized LLM usage and inference to cut AI operational cost while holding output quality.",
       ],
-      icon: <Briefcase className="h-6 w-6" />
     },
     {
-      type: 'education',
-      title: 'Master of Science in Computer Science',
-      company: 'University of Texas at Arlington',
-      period: 'Aug 2023 - May 2025',
-      location: 'Arlington, TX',
-      description: 'Pursued advanced coursework in AI/ML, data structures, and distributed systems with a perfect 4.0/4.0 CGPA.',
+      type: "work",
+      title: "AI Engineer",
+      company: "Infoshare Systems Inc.",
+      period: "Jul 2025 – Dec 2025",
+      location: "Remote",
+      description:
+        "Architected multi-agent AI systems for insurance and HRTech, taking ideas from prototype to scaled production.",
       achievements: [
-        'Maintaining perfect 4.0/4.0 CGPA in advanced CS coursework',
-        'Focusing on GenAI, Machine Learning, and Software Engineering',
-        'Expected graduation: May 2025'
+        "Built a multi-agent system automating underwriting, claims, and policy verification — ~70% less manual review, 3–5× more policies/day.",
+        "Created a Vision-Language agent scoring property risk from Zillow / Street View imagery, cutting evaluation from ~30–45 min to <5 min.",
+        "Shipped a RAG Policy agent for real-time retrieval and cross-validation, accelerating coverage checks by 80%.",
+        "Automated screening of 1,000+ resumes/posting with LangGraph + local LLMs, cutting HR review time 65%, with a Next.js fit-score portal.",
+        "Ran orchestration with LangGraph, vector retrieval via Chroma, and Groq LLM APIs at scale.",
       ],
-      icon: <GraduationCap className="h-6 w-6" />
-    },
-
-    {
-      type: 'work',
-      title: 'Software Developer - Intern',
-      company: 'Best Koki Automotive Pvt Ltd',
-      period: 'Apr 2022 - Jul 2023',
-      location: 'India',
-      description: 'Developed predictive maintenance systems and real-time monitoring dashboards for manufacturing operations, significantly improving efficiency and reducing downtime.',
-      achievements: [
-        'Reduced unplanned downtime by 30% through ML-powered anomaly detection',
-        'Deployed live dashboards across 50+ machines using React.js on Raspberry Pi',
-        'Built C-level dashboards in Grafana for real-time operational insights',
-        'Reduced defective part rejection from 35% to 19% with RFID integration'
-      ],
-      icon: <Briefcase className="h-6 w-6" />
     },
     {
-      type: 'education',
-      title: 'Bachelor of Technology in Computer Science (Honors)',
-      company: 'Lovely Professional University',
-      period: 'Jul 2019 - May 2023',
-      location: 'Punjab, India',
-      description: 'Honors degree in Computer Science with strong foundation in programming, data structures, algorithms, and software development practices.',
+      type: "education",
+      title: "M.S. in Computer Science",
+      company: "University of Texas at Arlington",
+      period: "Aug 2023 – May 2025",
+      location: "Arlington, TX",
+      description:
+        "Advanced coursework in AI/ML, distributed systems, and software engineering.",
       achievements: [
-        'Graduated with Honors (CGPA: 8.4/10)',
-        'Strong coursework in Data Structures, Algorithms, and Software Engineering',
-        'Active participation in coding competitions and hackathons'
+        "Focused on GenAI, RAG, and applied machine learning.",
+        "Strong grounding in scalable software and data systems.",
       ],
-      icon: <GraduationCap className="h-6 w-6" />
-    }
+    },
+    {
+      type: "work",
+      title: "Software Developer — Intern",
+      company: "Best Koki Automotive",
+      period: "Jan 2023 – Jul 2023",
+      location: "India",
+      description:
+        "Built predictive-maintenance and real-time monitoring systems for the factory floor.",
+      achievements: [
+        "Reduced unplanned downtime 30% with ensemble-ML anomaly detection.",
+        "Integrated RFID M2M across 20+ machines, cutting defective-part rejection from 35% to 19%.",
+        "Deployed React dashboards on Raspberry Pi across 50+ machines and built C-level Grafana dashboards.",
+      ],
+    },
+    {
+      type: "education",
+      title: "B.Tech in Computer Science (Honors)",
+      company: "Lovely Professional University",
+      period: "2019 – 2023",
+      location: "Punjab, India",
+      description:
+        "Honors degree with a strong foundation in DSA, OOP, and software development.",
+      achievements: [
+        "Solid grounding in Data Structures, Algorithms, and Software Engineering.",
+        "Active in coding competitions and hackathons.",
+      ],
+    },
   ];
 
   const skills = [
-    { category: 'AI/ML', techs: ['RAG', 'LangChain', 'LangGraph', 'OpenAI', 'Ollama', 'TensorFlow', 'PyTorch', 'MLOps'] },
-    { category: 'Web Dev', techs: ['React.js', 'Next.js', 'FastAPI', 'Node.js', 'JavaScript', 'HTML/CSS', 'Figma'] },
-    { category: 'Data & Analytics', techs: ['Spark', 'PySpark', 'Databricks', 'Tableau', 'Seaborn', 'Matplotlib'] },
-    { category: 'Cloud & Tools', techs: ['AWS EC2', 'AWS S3', 'ChromaDB', 'Docker', 'Git', 'Agile', 'Shell'] }
+    { category: "Languages", techs: ["Python", "JavaScript", "Scala", "SQL", "Shell", "Java"] },
+    { category: "AI / ML", techs: ["RAG", "LLMs", "LangChain", "LangGraph", "TensorFlow", "PyTorch", "NLP", "MLOps"] },
+    { category: "Web", techs: ["FastAPI", "React.js", "Next.js", "Node.js", "REST APIs", "Figma"] },
+    { category: "Data & Big Data", techs: ["Spark", "Databricks", "Tableau", "Seaborn", "Matplotlib"] },
+    { category: "Tools & Cloud", techs: ["AWS", "Docker", "Git", "ChromaDB", "Agile"] },
+  ];
+
+  const impact = [
+    { value: "~70%", label: "less manual review in underwriting" },
+    { value: "65%", label: "faster HR resume screening" },
+    { value: "−30%", label: "factory downtime" },
+    { value: "80%", label: "faster policy coverage checks" },
+    { value: "1,000+", label: "resumes screened per posting" },
+    { value: "<5 min", label: "property risk evaluation" },
+  ];
+
+  const certifications = [
+    { name: "Meta Front-End Developer", issuer: "Meta" },
+    { name: "Career Essentials in Software Development", issuer: "Microsoft" },
+    { name: "Supervised ML: Regression & Classification", issuer: "Stanford" },
   ];
 
   return (
-    <section className="py-20 px-4">
-      <div className="container mx-auto max-w-6xl">
+    <section className="py-24 px-4">
+      <div className="section-shell">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-5xl font-sketch font-bold mb-4 sketch-underline">
-            Experience & Skills
+        <div className="text-center mb-12">
+          <span className="eyebrow mb-4">Experience & Skills</span>
+          <h2 className="text-5xl md:text-6xl font-display font-bold mt-4">
+            My journey so far
           </h2>
-          <p className="text-xl text-muted-foreground font-handwritten max-w-2xl mx-auto">
-            My journey through the world of code, coffee, and continuous learning ☕
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mt-3">
+            From the factory floor to forward-deployed AI — shipping outcomes, not just code.
           </p>
-          <div className="sketch-divider" />
+          <div className="sketch-divider max-w-md mx-auto" />
+          <a
+            href={site.resumeUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="btn-sketch-primary mt-2"
+          >
+            <Download className="h-5 w-5" />
+            View Full Resume
+          </a>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-12">
+        {/* Impact stats */}
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-16">
+          {impact.map((stat) => (
+            <div key={stat.label} className="sketch-card p-5 text-center bg-card">
+              <p className="text-4xl font-display font-bold text-primary">{stat.value}</p>
+              <p className="text-sm text-muted-foreground mt-1">{stat.label}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="grid lg:grid-cols-[2.25fr_0.95fr] gap-10">
           {/* Timeline */}
-          <div className="lg:col-span-2">
-            <h3 className="text-3xl font-sketch font-semibold mb-8 text-center lg:text-left">
-              My Journey 📍
-            </h3>
-            
-            <div className="space-y-8">
+          <div>
+            <div className="mb-8 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <p className="text-xs font-bold uppercase tracking-[0.18em] text-primary">Main story</p>
+                <h3 className="text-4xl font-display font-bold">Timeline</h3>
+              </div>
+              <p className="max-w-md text-sm text-muted-foreground">
+                The important part: where the work happened, what got shipped, and the measurable outcome.
+              </p>
+            </div>
+
+            <div className="relative space-y-6 before:absolute before:left-[1.35rem] before:top-2 before:bottom-2 before:w-0.5 before:bg-border">
               {experiences.map((exp, index) => (
-                <div key={index} className="relative">
-                  {/* Timeline Line */}
-                  {index !== experiences.length - 1 && (
-                    <div className="absolute left-8 top-16 w-0.5 h-full bg-border -z-10" />
-                  )}
-                  
-                  <div className="sketch-card flex gap-6 relative">
-                    {/* Icon */}
-                    <div className={`flex-shrink-0 p-3 rounded-full ${
-                      exp.type === 'education' ? 'bg-accent/20 text-accent-foreground' : 'bg-primary/20 text-primary'
-                    }`}>
-                      {exp.icon}
-                    </div>
-                    
-                    {/* Content */}
-                    <div className="flex-1 space-y-3">
-                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-                        <h4 className="text-xl font-sketch font-semibold">
+                <div key={index} className="relative pl-14">
+                  {/* Node */}
+                  <div
+                    className={`absolute left-0 top-1 flex items-center justify-center w-11 h-11 rounded-full border-2 ${
+                      exp.type === "education"
+                        ? "bg-card text-foreground border-foreground"
+                        : "bg-foreground text-background border-foreground"
+                    }`}
+                  >
+                    {exp.type === "education" ? (
+                      <GraduationCap className="h-5 w-5" />
+                    ) : (
+                      <Briefcase className="h-5 w-5" />
+                    )}
+                  </div>
+
+                  <div className={`sketch-card ${index < 2 ? "border-foreground shadow-[6px_6px_0px_0px_hsl(var(--border))]" : ""}`}>
+                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-2">
+                      <div>
+                        <h4 className="text-2xl font-display font-bold leading-tight">
                           {exp.title}
                         </h4>
-                        <span className="text-sm font-handwritten text-muted-foreground bg-muted px-3 py-1 rounded-full">
-                          {exp.period}
+                        <p className="text-primary font-semibold">{exp.company}</p>
+                      </div>
+                      <div className="flex flex-col sm:items-end gap-1 shrink-0">
+                        <span className="chip">{exp.period}</span>
+                        <span className="inline-flex items-center gap-1 text-xs text-muted-foreground">
+                          <MapPin className="h-3.5 w-3.5" />
+                          {exp.location}
                         </span>
                       </div>
-                      
-                      <div className="flex items-center gap-2 text-primary font-handwritten font-semibold">
-                        <span>{exp.company}</span>
-                        <ArrowRight className="h-4 w-4" />
-                        <span className="text-muted-foreground">{exp.location}</span>
-                      </div>
-                      
-                      <p className="text-muted-foreground leading-relaxed">
-                        {exp.description}
-                      </p>
-                      
-                      {/* Achievements */}
-                      <div className="space-y-2">
-                        {exp.achievements.map((achievement, achIndex) => (
-                          <div key={achIndex} className="flex items-start gap-2">
-                            <Award className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-                            <span className="text-sm">{achievement}</span>
-                          </div>
-                        ))}
-                      </div>
+                    </div>
+
+                    <p className="text-sm text-muted-foreground mb-3">{exp.description}</p>
+
+                    <div className="space-y-2">
+                      {exp.achievements.map((achievement, achIndex) => (
+                        <div key={achIndex} className="flex items-start gap-2">
+                          <Award className="h-4 w-4 text-primary mt-0.5 shrink-0" />
+                          <span className="text-sm text-foreground/90">{achievement}</span>
+                        </div>
+                      ))}
                     </div>
                   </div>
                 </div>
@@ -145,67 +198,44 @@ const ExperienceSection = () => {
             </div>
           </div>
 
-          {/* Skills */}
+          {/* Skills + Certs */}
           <div className="space-y-8">
-            <h3 className="text-3xl font-sketch font-semibold text-center lg:text-left">
-              My Toolbox 🛠️
-            </h3>
-            
-            <div className="space-y-6">
-              {skills.map((skillGroup, index) => (
-                <div key={index} className="sketch-card p-6">
-                  <h4 className="font-sketch text-lg font-semibold mb-4 text-primary flex items-center gap-2">
-                    <span className="w-2 h-2 bg-primary rounded-full"></span>
-                    {skillGroup.category}
-                  </h4>
-                  
-                  <div className="space-y-2">
-                    {skillGroup.techs.map((tech, techIndex) => (
-                      <div key={techIndex} className="group">
-                        <div className="flex items-center justify-between">
-                          <span className="font-handwritten">{tech}</span>
-                          <div className="flex gap-1">
-                            {[...Array(5)].map((_, i) => (
-                              <div
-                                key={i}
-                                className={`w-2 h-2 rounded-full transition-colors duration-300 ${
-                                  i < (4 + Math.random()) // Random skill level for demo
-                                    ? 'bg-primary'
-                                    : 'bg-muted'
-                                }`}
-                              />
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-                    ))}
+            <div>
+              <h3 className="text-3xl font-display font-bold mb-6">My Toolbox</h3>
+              <div className="space-y-4">
+                {skills.map((skillGroup, index) => (
+                  <div key={index} className="sketch-card p-5">
+                    <h4 className="text-lg font-display font-bold mb-3 text-primary flex items-center gap-2">
+                      <span className="w-2 h-2 bg-primary rounded-full" />
+                      {skillGroup.category}
+                    </h4>
+                    <div className="flex flex-wrap gap-1.5">
+                      {skillGroup.techs.map((tech, techIndex) => (
+                        <span key={techIndex} className="chip">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
 
-            {/* Fun Stats */}
-            <div className="sketch-card p-6 bg-primary/5 border-primary/20">
-              <h4 className="font-sketch text-lg font-semibold mb-4 text-primary">
-                Fun Stats 📊
+            {/* Certifications */}
+            <div className="rounded-2xl border border-border bg-card/60 p-5 opacity-75">
+              <h4 className="text-lg font-display font-bold mb-4 text-muted-foreground">
+                Certifications
               </h4>
-              <div className="space-y-3 text-sm">
-                <div className="flex justify-between">
-                  <span>☕ Cups of coffee consumed</span>
-                  <span className="font-semibold">2,847</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>🐛 Bugs squashed</span>
-                  <span className="font-semibold">1,234+</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>🚀 Projects launched</span>
-                  <span className="font-semibold">47</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>🎉 Happy clients</span>
-                  <span className="font-semibold">23</span>
-                </div>
+              <div className="space-y-3">
+                {certifications.map((cert) => (
+                  <div key={cert.name} className="flex items-start gap-2">
+                    <BadgeCheck className="h-4 w-4 text-muted-foreground mt-0.5 shrink-0" />
+                    <div>
+                      <p className="text-sm font-medium leading-tight text-foreground/80">{cert.name}</p>
+                      <p className="text-xs text-muted-foreground">{cert.issuer}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
