@@ -134,10 +134,18 @@ const ExperienceSection = () => {
           ))}
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-10">
+        <div className="grid lg:grid-cols-[2.25fr_0.95fr] gap-10">
           {/* Timeline */}
-          <div className="lg:col-span-2">
-            <h3 className="text-3xl font-display font-bold mb-8">Timeline 📍</h3>
+          <div>
+            <div className="mb-8 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <p className="text-xs font-bold uppercase tracking-[0.18em] text-primary">Main story</p>
+                <h3 className="text-4xl font-display font-bold">Timeline</h3>
+              </div>
+              <p className="max-w-md text-sm text-muted-foreground">
+                The important part: where the work happened, what got shipped, and the measurable outcome.
+              </p>
+            </div>
 
             <div className="relative space-y-6 before:absolute before:left-[1.35rem] before:top-2 before:bottom-2 before:w-0.5 before:bg-border">
               {experiences.map((exp, index) => (
@@ -157,7 +165,7 @@ const ExperienceSection = () => {
                     )}
                   </div>
 
-                  <div className="sketch-card">
+                  <div className={`sketch-card ${index < 2 ? "border-foreground shadow-[6px_6px_0px_0px_hsl(var(--border))]" : ""}`}>
                     <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-2">
                       <div>
                         <h4 className="text-2xl font-display font-bold leading-tight">
@@ -193,7 +201,7 @@ const ExperienceSection = () => {
           {/* Skills + Certs */}
           <div className="space-y-8">
             <div>
-              <h3 className="text-3xl font-display font-bold mb-6">My Toolbox 🛠️</h3>
+              <h3 className="text-3xl font-display font-bold mb-6">My Toolbox</h3>
               <div className="space-y-4">
                 {skills.map((skillGroup, index) => (
                   <div key={index} className="sketch-card p-5">
@@ -214,17 +222,17 @@ const ExperienceSection = () => {
             </div>
 
             {/* Certifications */}
-            <div className="sketch-card p-6 bg-foreground text-background border-foreground">
-              <h4 className="text-xl font-display font-bold mb-4 text-primary">
-                Certifications 🎓
+            <div className="rounded-2xl border border-border bg-card/60 p-5 opacity-75">
+              <h4 className="text-lg font-display font-bold mb-4 text-muted-foreground">
+                Certifications
               </h4>
               <div className="space-y-3">
                 {certifications.map((cert) => (
                   <div key={cert.name} className="flex items-start gap-2">
-                    <BadgeCheck className="h-4 w-4 text-primary mt-0.5 shrink-0" />
+                    <BadgeCheck className="h-4 w-4 text-muted-foreground mt-0.5 shrink-0" />
                     <div>
-                      <p className="text-sm font-semibold leading-tight">{cert.name}</p>
-                      <p className="text-xs text-background/65">{cert.issuer}</p>
+                      <p className="text-sm font-medium leading-tight text-foreground/80">{cert.name}</p>
+                      <p className="text-xs text-muted-foreground">{cert.issuer}</p>
                     </div>
                   </div>
                 ))}

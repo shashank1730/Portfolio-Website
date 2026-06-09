@@ -1,5 +1,20 @@
 import { useState } from "react";
-import { ExternalLink, Github, Lock, TrendingUp } from "lucide-react";
+import {
+  BarChart3,
+  ExternalLink,
+  Factory,
+  FileSearch,
+  FileText,
+  Github,
+  Landmark,
+  Lock,
+  LockKeyhole,
+  Route,
+  ShieldCheck,
+  TrendingUp,
+  Video,
+  type LucideIcon,
+} from "lucide-react";
 import { buildMailto } from "@/lib/site";
 
 type Project = {
@@ -7,7 +22,7 @@ type Project = {
   description: string;
   tags: string[];
   category: string;
-  emoji: string;
+  icon: LucideIcon;
   impact: string;
   kind: "Work" | "Personal";
   liveUrl?: string;
@@ -27,7 +42,7 @@ const ProjectsSection = () => {
         "Built AI agents that automate loan readiness — OCR, document classification, and checklist validation. Added a prompt-tuning framework that turns plain-language rules (e.g. 'exclude bonus income') into structured validation logic.",
       tags: ["LLMs", "OCR", "Prompt Tuning", "Evals"],
       category: "AI Agents",
-      emoji: "🏦",
+      icon: Landmark,
       impact: "End-to-end loan automation",
       kind: "Work",
       confidential: true,
@@ -38,7 +53,7 @@ const ProjectsSection = () => {
         "Orchestrated a multi-agent system for underwriting, claims, and policy verification. A Vision-Language agent scores property risk from Zillow / Street View imagery; a RAG agent cross-validates hundreds of policies in real time.",
       tags: ["LangGraph", "Vision-Language", "Chroma", "Groq"],
       category: "AI Agents",
-      emoji: "🛡️",
+      icon: ShieldCheck,
       impact: "~70% less manual review",
       kind: "Work",
       confidential: true,
@@ -49,7 +64,7 @@ const ProjectsSection = () => {
         "Agentic pipeline that screens 1,000+ resumes per posting with locally-hosted LLMs, plus a Next.js portal giving HR instant fit-scores and reasoning reports with section-wise RAG retrieval.",
       tags: ["Next.js", "LangGraph", "ChromaDB", "RAG"],
       category: "Full Stack",
-      emoji: "📄",
+      icon: FileSearch,
       impact: "65% faster HR review",
       kind: "Work",
       confidential: true,
@@ -60,7 +75,7 @@ const ProjectsSection = () => {
         "A secure, open-source RAG system on self-hosted LLMs with strict Role-Based Access Control — it embeds and retrieves only role-authorized documents and surfaces answer sources as clear file cards.",
       tags: ["FastAPI", "ChromaDB", "Ollama", "RBAC"],
       category: "RAG",
-      emoji: "🔐",
+      icon: LockKeyhole,
       impact: "Compliant, self-governed AI",
       kind: "Personal",
       githubUrl: "https://github.com/shashank1730",
@@ -71,7 +86,7 @@ const ProjectsSection = () => {
         "Real-time video summarization powered by Ollama with FastAPI transcript ingestion. Modular ReAct-style agents via LangGraph, Pydantic-validated routing, and LangSmith observability for debugging chains.",
       tags: ["LangGraph", "FastAPI", "LangSmith", "Ollama"],
       category: "RAG",
-      emoji: "▶️",
+      icon: Video,
       impact: "20% faster responses",
       kind: "Personal",
       githubUrl: "https://github.com/shashank1730",
@@ -82,7 +97,7 @@ const ProjectsSection = () => {
         "Academic conference platform that streamlines paper submissions with automatic reviewer assignment by expertise, a secure payment gateway, and real-time live chat — designed in Figma, deployed on AWS.",
       tags: ["React.js", "Node.js", "MySQL", "AWS"],
       category: "Full Stack",
-      emoji: "📝",
+      icon: FileText,
       impact: "Reviewer auto-matching",
       kind: "Personal",
       githubUrl: "https://github.com/shashank1730",
@@ -93,7 +108,7 @@ const ProjectsSection = () => {
         "Ensemble ML anomaly detection on factory-floor signals to catch failures early, with backend APIs for M2M / RFID tracking across 20+ machines to eliminate manual logging errors.",
       tags: ["Anomaly Detection", "RFID", "Python", "React"],
       category: "ML & Vision",
-      emoji: "🏭",
+      icon: Factory,
       impact: "−30% unplanned downtime",
       kind: "Work",
       confidential: true,
@@ -104,7 +119,7 @@ const ProjectsSection = () => {
         "Real-time React dashboards running on Raspberry Pi across 50+ machines, centralizing production data, plus C-level Grafana dashboards for instant decisions on capacity and workflow.",
       tags: ["React.js", "Grafana", "Raspberry Pi", "Linux"],
       category: "Full Stack",
-      emoji: "📊",
+      icon: BarChart3,
       impact: "50+ machines monitored",
       kind: "Work",
       confidential: true,
@@ -115,7 +130,7 @@ const ProjectsSection = () => {
         "Real-time traffic-scene segmentation with a U-Net encoder-decoder for pixel-level understanding, refined with K-means clustering for sharper object boundaries — groundwork for ADAS.",
       tags: ["U-Net", "PyTorch", "Scikit-Learn", "Computer Vision"],
       category: "ML & Vision",
-      emoji: "🛣️",
+      icon: Route,
       impact: "Pixel-level scene parsing",
       kind: "Personal",
       githubUrl: "https://github.com/shashank1730",
@@ -163,7 +178,9 @@ const ProjectsSection = () => {
 
         {/* Projects Grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredProjects.map((project, index) => (
+          {filteredProjects.map((project, index) => {
+            const ProjectIcon = project.icon;
+            return (
             <article
               key={index}
               className="sketch-card group flex flex-col p-0 overflow-hidden animate-fade-up"
@@ -171,9 +188,9 @@ const ProjectsSection = () => {
             >
               {/* Header band */}
               <div className="relative h-32 border-b-2 border-border bg-secondary/55 flex items-center justify-center">
-                <span className="text-5xl transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6">
-                  {project.emoji}
-                </span>
+                <div className="rounded-3xl border-2 border-foreground bg-card p-5 transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6 group-hover:shadow-[5px_5px_0px_0px_hsl(var(--foreground))]">
+                  <ProjectIcon className="h-10 w-10 text-foreground" />
+                </div>
                 <span className="absolute top-3 left-3 chip bg-card border-border text-foreground">
                   {project.kind}
                 </span>
@@ -238,7 +255,8 @@ const ProjectsSection = () => {
                 </div>
               </div>
             </article>
-          ))}
+            );
+          })}
         </div>
 
         {/* Call to Action */}

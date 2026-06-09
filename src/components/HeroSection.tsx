@@ -52,7 +52,7 @@ const HeroSection = () => {
   ];
 
   return (
-    <section className="min-h-screen relative overflow-hidden pt-28 pb-16">
+    <section className="min-h-[92vh] relative overflow-hidden pt-24 pb-10">
       <FloatingDoodles />
 
       {/* Background Image */}
@@ -64,7 +64,7 @@ const HeroSection = () => {
 
       {/* Content */}
       <div className="section-shell relative z-10">
-        <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-8 lg:gap-12 items-center">
+        <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-8 lg:gap-10 items-center">
           <div>
             <motion.div
               className="mb-6"
@@ -79,14 +79,14 @@ const HeroSection = () => {
             </motion.div>
 
             <motion.h1
-              className="text-6xl md:text-8xl lg:text-9xl font-display font-bold mb-6 leading-[0.86]"
+              className="text-6xl md:text-8xl lg:text-[8.5rem] font-display font-bold mb-6 leading-[0.86]"
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1 }}
             >
-              <span className="block">AI systems</span>
-              <span className="block text-primary">that survive</span>
-              <span className="block">real users.</span>
+              <span className="block">I build AI</span>
+              <span className="block text-primary">agents for messy</span>
+              <span className="block">workflows.</span>
             </motion.h1>
 
             <motion.p
@@ -95,9 +95,9 @@ const HeroSection = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.45 }}
             >
-              I'm <span className="text-foreground font-semibold">{site.name}</span> — a
-              forward deployed AI engineer embedding with teams to turn messy workflows into
-              <span className="text-primary font-semibold"> production-grade agentic products</span>.
+              I'm <span className="text-foreground font-semibold">{site.name}</span> — I work with
+              teams in mortgage, insurance, HR, and manufacturing to turn manual review into
+              <span className="text-primary font-semibold"> reliable AI products people can trust</span>.
             </motion.p>
 
             <motion.div
@@ -111,7 +111,7 @@ const HeroSection = () => {
                 {site.location}
               </span>
               <span className="rounded-full border-2 border-border bg-card/80 px-4 py-2">
-                RAG · Agents · Evals · Product
+                RAG · OCR · Agents · Evals · Product
               </span>
             </motion.div>
 
@@ -172,14 +172,14 @@ const HeroSection = () => {
                     <span className="h-3 w-3 rounded-full bg-yellow-400" />
                     <span className="h-3 w-3 rounded-full bg-green-400" />
                   </div>
-                  <span className="text-xs text-background/60">agent-command-center.ts</span>
+                  <span className="text-xs text-background/60">workflow-to-ai-product.ts</span>
                 </div>
                 <div className="p-5 font-mono text-sm leading-relaxed">
                   <p className="text-background/55">const mission = &#123;</p>
-                  <p><span className="text-orange-300">role</span>: "Forward Deployed AI Engineer",</p>
-                  <p><span className="text-orange-300">mode</span>: "100% AI-Native",</p>
-                  <p><span className="text-orange-300">ships</span>: ["RAG", "Agents", "Evals"],</p>
-                  <p><span className="text-orange-300">output</span>: "less manual work, better decisions"</p>
+                  <p><span className="text-orange-300">input</span>: "manual business workflow",</p>
+                  <p><span className="text-orange-300">system</span>: ["RAG", "OCR", "agents", "evals"],</p>
+                  <p><span className="text-orange-300">owner</span>: "Shashank Nallabothu",</p>
+                  <p><span className="text-orange-300">output</span>: "AI product teams actually use"</p>
                   <p className="text-background/55">&#125;</p>
                 </div>
               </div>

@@ -27,8 +27,9 @@ const AboutSection = () => {
   ];
 
   const playground = [
+    "Cursor", "Claude Code", "Codex", "Langfuse", "OpenAI", "Hermes Agent",
     "LangGraph", "LangChain", "RAG", "FastAPI", "React.js", "Next.js",
-    "OpenAI", "Ollama", "ChromaDB", "Evals", "AWS",
+    "Ollama", "ChromaDB", "Evals", "AWS", "Groq", "Pydantic",
   ];
 
   const principles = [
@@ -78,14 +79,14 @@ const AboutSection = () => {
             </p>
           </div>
 
-          <div className="bento-card lg:col-span-3 p-4">
-            <div className="relative h-full min-h-[360px] overflow-hidden rounded-[1.25rem] border-2 border-foreground bg-secondary">
+          <div className="bento-card lg:col-span-3 p-4 bg-[#fbf8f0]">
+            <div className="relative h-full min-h-[360px] overflow-hidden rounded-[1.25rem] border-2 border-border bg-[#f6efe3]">
               <img
                 src={sketchAvatar}
                 alt="Shashank Nallabothu"
                 className="h-full w-full object-cover grayscale"
               />
-              <div className="absolute bottom-4 left-4 right-4 rounded-2xl border-2 border-foreground bg-card p-4">
+              <div className="absolute bottom-4 left-4 right-4 rounded-2xl border-2 border-border bg-card/95 p-4 shadow-sketch">
                 <p className="font-display text-2xl font-bold leading-none">{site.name}</p>
                 <p className="mt-1 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
                   {site.role}
@@ -125,14 +126,14 @@ const AboutSection = () => {
             </div>
           </div>
 
-          <div className="bento-card lg:col-span-5 bg-foreground text-background">
-            <h3 className="text-3xl font-display font-bold mb-5 text-primary">My Playground</h3>
-            <p className="mb-5 text-sm text-background/70">
-              Tools change. Product judgment compounds.
+          <div className="bento-card lg:col-span-5 bg-card border-border">
+            <h3 className="text-3xl font-display font-bold mb-3 text-foreground">My Playground</h3>
+            <p className="mb-5 text-sm text-muted-foreground">
+              The stack changes fast. I keep the mindset product-first and use whatever makes the workflow ship.
             </p>
             <div className="flex flex-wrap gap-2">
               {playground.map((tech) => (
-                <span key={tech} className="rounded-full border border-background/20 px-3 py-1 text-xs font-semibold text-background/90">
+                <span key={tech} className="chip">
                   {tech}
                 </span>
               ))}
