@@ -2,96 +2,91 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Sketch-style notebook portfolio design system */
+/* Modern notebook / sketch portfolio design system */
 
 @layer base {
   :root {
-    /* Notebook color palette */
-    --background: 42 20% 97%; /* Warm cream paper */
-    --foreground: 220 15% 15%; /* Charcoal ink */
+    /* Warm paper background */
+    --background: 40 33% 97%; /* Warm cream paper */
+    --foreground: 222 22% 14%; /* Charcoal ink */
 
-    --card: 42 25% 98%; /* Slightly warmer white */
-    --card-foreground: 220 15% 15%;
+    --card: 0 0% 100%; /* Clean paper card */
+    --card-foreground: 222 22% 14%;
 
-    --popover: 42 25% 98%;
-    --popover-foreground: 220 15% 15%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 22% 14%;
 
-    /* Bold highlighter accent - vibrant orange */
-    --primary: 25 95% 65%; /* Bright orange highlighter */
-    --primary-foreground: 42 25% 98%;
+    /* Highlighter orange accent */
+    --primary: 22 90% 55%; /* Confident orange */
+    --primary-foreground: 40 33% 98%;
 
-    /* Sketch pencil grays */
-    --secondary: 220 8% 88%; /* Light pencil sketch */
-    --secondary-foreground: 220 15% 15%;
+    /* Pencil grays */
+    --secondary: 220 14% 92%;
+    --secondary-foreground: 222 22% 14%;
 
-    --muted: 220 8% 92%; /* Very light sketch */
-    --muted-foreground: 220 10% 45%; /* Medium pencil */
+    --muted: 220 14% 94%;
+    --muted-foreground: 220 9% 42%;
 
-    --accent: 200 60% 75%; /* Soft sketch blue */
-    --accent-foreground: 220 15% 15%;
+    /* Ink accent (deep teal-blue) for contrast & modern feel */
+    --accent: 200 75% 38%;
+    --accent-foreground: 40 33% 98%;
 
-    --destructive: 0 75% 60%;
-    --destructive-foreground: 42 25% 98%;
+    --destructive: 0 75% 55%;
+    --destructive-foreground: 40 33% 98%;
 
-    --border: 220 8% 85%; /* Sketch line color */
-    --input: 220 8% 90%;
-    --ring: 25 95% 65%; /* Match primary */
+    --border: 222 16% 88%; /* Soft sketch line */
+    --input: 222 16% 90%;
+    --ring: 22 90% 55%;
 
-    --radius: 0.75rem; /* Slightly more rounded for organic feel */
+    --radius: 1rem;
 
     /* Custom sketch tokens */
-    --sketch-light: 220 8% 95%; /* Very light sketch lines */
-    --sketch-medium: 220 10% 75%; /* Medium sketch shading */
-    --sketch-dark: 220 15% 25%; /* Dark sketch lines */
-    
+    --ink: 222 28% 18%;
+    --sketch-light: 220 14% 95%;
+    --sketch-medium: 220 12% 72%;
+    --sketch-dark: 222 28% 18%;
+
     /* Gradients */
-    --gradient-paper: linear-gradient(135deg, hsl(42 25% 98%), hsl(42 20% 96%));
-    --gradient-sketch: linear-gradient(90deg, hsl(25 95% 65%), hsl(35 90% 70%));
-    
-    /* Shadows for that lifted paper feel */
-    --shadow-sketch: 0 4px 6px -1px hsl(220 15% 15% / 0.1), 0 2px 4px -1px hsl(220 15% 15% / 0.06);
-    --shadow-hover: 0 8px 25px -5px hsl(25 95% 65% / 0.3);
-    
-    /* Animation curves */
+    --gradient-paper: radial-gradient(circle at 20% 15%, hsl(40 40% 98%), hsl(40 28% 95%));
+    --gradient-sketch: linear-gradient(100deg, hsl(22 90% 55%), hsl(32 92% 60%));
+    --gradient-ink: linear-gradient(135deg, hsl(200 75% 38%), hsl(205 70% 45%));
+
+    /* Shadows for lifted paper feel */
+    --shadow-sketch: 0 4px 6px -1px hsl(222 22% 14% / 0.08), 0 2px 4px -2px hsl(222 22% 14% / 0.06);
+    --shadow-card: 0 10px 30px -12px hsl(222 22% 14% / 0.18);
+    --shadow-hover: 0 18px 40px -16px hsl(22 90% 55% / 0.35);
+
     --ease-sketch: cubic-bezier(0.23, 1, 0.32, 1);
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 222 28% 8%;
+    --foreground: 40 25% 94%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 222 26% 11%;
+    --card-foreground: 40 25% 94%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 222 26% 11%;
+    --popover-foreground: 40 25% 94%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 22 90% 58%;
+    --primary-foreground: 222 28% 8%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 222 18% 18%;
+    --secondary-foreground: 40 25% 94%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 222 18% 18%;
+    --muted-foreground: 220 12% 65%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 195 70% 50%;
+    --accent-foreground: 222 28% 8%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 45%;
+    --destructive-foreground: 40 25% 94%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --border: 222 16% 22%;
+    --input: 222 16% 22%;
+    --ring: 22 90% 58%;
   }
 }
 
@@ -100,49 +95,54 @@
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+  }
+
   body {
     @apply bg-background text-foreground;
-    font-family: 'Patrick Hand', cursive;
-    background: var(--gradient-paper);
+    font-family: 'Inter', system-ui, sans-serif;
+    background-color: hsl(var(--background));
+    background-image:
+      radial-gradient(hsl(var(--foreground) / 0.05) 1px, transparent 1px);
+    background-size: 22px 22px;
+    -webkit-font-smoothing: antialiased;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Caveat', cursive;
-    font-weight: 600;
+    font-weight: 700;
+    letter-spacing: 0.01em;
   }
 }
 
 @layer components {
   /* Sketch-style button variants */
   .btn-sketch {
-    @apply relative px-6 py-3 border-2 border-foreground bg-transparent text-foreground rounded-lg;
-    @apply hover:bg-primary hover:text-primary-foreground hover:border-primary;
+    @apply relative inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-foreground bg-card text-foreground rounded-xl font-semibold;
+    @apply hover:bg-foreground hover:text-background;
     @apply transition-all duration-300;
-    @apply shadow-[2px_2px_0px_0px_hsl(var(--foreground))];
-    @apply hover:shadow-[4px_4px_0px_0px_hsl(var(--primary))];
-    @apply hover:translate-x-[-2px] hover:translate-y-[-2px];
-    font-family: 'Caveat', cursive;
-    font-size: 1.1rem;
-    font-weight: 600;
+    @apply shadow-[3px_3px_0px_0px_hsl(var(--foreground))];
+    @apply hover:shadow-[5px_5px_0px_0px_hsl(var(--foreground))];
+    @apply hover:translate-x-[-2px] hover:translate-y-[-2px] active:translate-x-0 active:translate-y-0;
   }
 
   .btn-sketch-primary {
-    @apply bg-primary border-primary text-primary-foreground;
-    @apply shadow-[2px_2px_0px_0px_hsl(var(--sketch-dark))];
-    @apply hover:shadow-[4px_4px_0px_0px_hsl(var(--sketch-dark))];
+    @apply relative inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-primary bg-primary text-primary-foreground rounded-xl font-semibold;
+    @apply transition-all duration-300;
+    @apply shadow-[3px_3px_0px_0px_hsl(var(--sketch-dark))];
+    @apply hover:shadow-[5px_5px_0px_0px_hsl(var(--sketch-dark))];
+    @apply hover:translate-x-[-2px] hover:translate-y-[-2px] active:translate-x-0 active:translate-y-0;
   }
 
-  /* Sketch-style borders and dividers */
-  .sketch-border {
-    @apply relative;
-  }
-  
-  .sketch-border::before {
-    content: '';
-    @apply absolute inset-0 border-2 border-dashed border-border rounded-lg;
-    transform: rotate(-0.5deg);
+  /* Section eyebrow tag */
+  .eyebrow {
+    @apply inline-flex items-center gap-2 px-4 py-1.5 rounded-full border-2 border-dashed border-primary/40 bg-primary/5 text-primary text-sm font-semibold uppercase tracking-wide;
+    font-family: 'Inter', sans-serif;
   }
 
+  /* Section dividers */
   .sketch-divider {
     @apply w-full h-px bg-gradient-to-r from-transparent via-border to-transparent my-8;
     position: relative;
@@ -151,40 +151,61 @@
   .sketch-divider::after {
     content: '✦';
     @apply absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2;
-    @apply bg-background px-4 text-muted-foreground;
+    @apply bg-background px-4 text-primary;
     font-family: 'Caveat', cursive;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
   }
 
-  /* Sketch-style cards */
+  /* Modern sketch cards: clean, lifted, consistent */
   .sketch-card {
-    @apply bg-card border-2 border-border rounded-lg p-6;
-    @apply shadow-[3px_3px_0px_0px_hsl(var(--border))];
-    @apply hover:shadow-[6px_6px_0px_0px_hsl(var(--primary))] hover:border-primary;
-    @apply transition-all duration-300;
-    @apply hover:translate-x-[-3px] hover:translate-y-[-3px];
-    transform: rotate(-0.2deg);
+    @apply relative bg-card border-2 border-border rounded-2xl p-6;
+    @apply shadow-card transition-all duration-300;
   }
 
-  .sketch-card:nth-child(even) {
-    transform: rotate(0.2deg);
+  .sketch-card:hover {
+    @apply border-primary/60 -translate-y-1;
+    box-shadow: var(--shadow-hover);
+  }
+
+  /* Chips / tags */
+  .chip {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium border transition-colors;
+    @apply bg-secondary/60 text-secondary-foreground border-border;
+  }
+
+  .chip-primary {
+    @apply bg-primary/10 text-primary border-primary/25;
+  }
+
+  .chip-accent {
+    @apply text-accent border-accent/25;
+    background-color: hsl(var(--accent) / 0.08);
   }
 
   /* Handwritten underline effect */
   .sketch-underline {
-    @apply relative;
+    @apply relative inline-block;
   }
 
   .sketch-underline::after {
     content: '';
-    @apply absolute bottom-0 left-0 w-full h-1 bg-primary opacity-30;
+    @apply absolute -bottom-1 left-0 w-full h-[6px] bg-primary/30 -z-10;
     border-radius: 50px;
     transform: scaleX(0) rotate(-1deg);
     transform-origin: left;
-    transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
   }
 
   .sketch-underline:hover::after {
     transform: scaleX(1) rotate(-1deg);
+  }
+
+  /* Display heading helper */
+  .font-display {
+    font-family: 'Caveat', cursive;
+  }
+
+  .font-hand {
+    font-family: 'Patrick Hand', cursive;
   }
 }

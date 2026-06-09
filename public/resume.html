@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shashank Nallabothu — Resume</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --ink: #15181f;
+        --muted: #5b6270;
+        --accent: #e8731f;
+        --line: #e3e0d8;
+        --paper: #faf7f1;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: "Inter", system-ui, sans-serif;
+        color: var(--ink);
+        background: var(--paper);
+        line-height: 1.5;
+      }
+      .sheet {
+        max-width: 850px;
+        margin: 0 auto;
+        background: #fff;
+        padding: 48px 56px;
+        box-shadow: 0 12px 40px -16px rgba(0, 0, 0, 0.25);
+      }
+      .toolbar {
+        max-width: 850px;
+        margin: 20px auto 0;
+        display: flex;
+        justify-content: flex-end;
+        padding: 0 8px;
+      }
+      .btn {
+        background: var(--accent);
+        color: #fff;
+        border: none;
+        padding: 10px 18px;
+        border-radius: 10px;
+        font-weight: 600;
+        font-size: 14px;
+        cursor: pointer;
+      }
+      header h1 {
+        margin: 0;
+        font-size: 30px;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+      }
+      header .role {
+        color: var(--accent);
+        font-weight: 700;
+        font-size: 15px;
+        margin-top: 2px;
+      }
+      .contact {
+        margin-top: 8px;
+        font-size: 13px;
+        color: var(--muted);
+      }
+      .contact a { color: var(--muted); text-decoration: none; }
+      .summary { margin-top: 14px; font-size: 13.5px; color: #2c313b; }
+      h2 {
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--accent);
+        border-bottom: 2px solid var(--line);
+        padding-bottom: 5px;
+        margin: 26px 0 12px;
+      }
+      .job { margin-bottom: 16px; }
+      .job-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .job-title { font-weight: 700; font-size: 14.5px; }
+      .job-org { color: var(--accent); font-weight: 600; font-size: 13.5px; }
+      .job-meta { color: var(--muted); font-size: 12.5px; white-space: nowrap; }
+      ul { margin: 8px 0 0; padding-left: 18px; }
+      li { font-size: 12.8px; margin-bottom: 4px; color: #2c313b; }
+      .skills p { font-size: 13px; margin: 6px 0; }
+      .skills strong { color: var(--ink); }
+      .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 28px; }
+      .certs li { margin-bottom: 3px; }
+      @media print {
+        body { background: #fff; }
+        .toolbar { display: none; }
+        .sheet { box-shadow: none; max-width: 100%; padding: 0; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="toolbar">
+      <button class="btn" onclick="window.print()">Download / Print PDF</button>
+    </div>
+    <div class="sheet">
+      <header>
+        <h1>Shashank Nallabothu</h1>
+        <div class="role">Forward Deployed AI Engineer</div>
+        <div class="contact">
+          <a href="mailto:nallabothushashank125@gmail.com">nallabothushashank125@gmail.com</a>
+          &nbsp;·&nbsp; Detroit, Michigan
+          &nbsp;·&nbsp; <a href="https://linkedin.com/in/shashank1730">linkedin.com/in/shashank1730</a>
+          &nbsp;·&nbsp; <a href="https://github.com/shashank1730">github.com/shashank1730</a>
+        </div>
+        <p class="summary">
+          Forward Deployed AI Engineer with strong experience building AI-powered products that solve
+          real-world problems. Skilled in RAG pipelines, LangChain / LangGraph, multi-agent
+          orchestration, and deploying scalable LLM systems. Combines solid web-development expertise
+          (React, FastAPI) with a track record of improving efficiency and decision-making across
+          HRTech, FinTech, insurance, and manufacturing.
+        </p>
+      </header>
+
+      <h2>Experience</h2>
+
+      <div class="job">
+        <div class="job-head">
+          <div>
+            <span class="job-title">Forward Deployed AI Engineer</span> —
+            <span class="job-org">Addy AI, Inc.</span>
+          </div>
+          <span class="job-meta">Dec 2025 – Present</span>
+        </div>
+        <ul>
+          <li>Led AI-driven mortgage loan processing — OCR, document classification, and checklist validation to automate loan readiness and borrower eligibility.</li>
+          <li>Designed an automated prompt-tuning framework that enhances base prompts using structured user feedback, improving checklist accuracy and reducing manual review.</li>
+          <li>Built custom AI agents per checklist type, letting users modify business logic (e.g. excluding bonus income) in natural language that auto-generates structured prompts.</li>
+          <li>Owned end-to-end evaluation (Evals) across the pipeline — OCR accuracy, classification, and checklist validation — for production-grade reliability.</li>
+          <li>Optimized LLM usage and inference to cut AI operational cost while maintaining output quality.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-head">
+          <div>
+            <span class="job-title">AI Engineer</span> —
+            <span class="job-org">Infoshare Systems Inc.</span>
+          </div>
+          <span class="job-meta">Jul 2025 – Dec 2025</span>
+        </div>
+        <ul>
+          <li>Architected a multi-agent system automating insurance underwriting, claims, and policy verification — ~70% less manual review, enabling 3–5× more policies per day.</li>
+          <li>Developed a Vision-Language agent pulling property data from Zillow, Street View, and county portals for image-based risk scoring, cutting evaluation from ~30–45 min to &lt;5 min.</li>
+          <li>Built a RAG Policy agent for real-time retrieval and cross-validation of hundreds of policies, accelerating coverage checks by 80%.</li>
+          <li>Automated screening of 1,000+ resumes per posting with LangGraph and local LLMs, cutting HR review time 65%; built a Next.js portal with auto-generated fit scores (85% match accuracy).</li>
+          <li>Managed orchestration with LangGraph, vector retrieval via Chroma, and Groq LLM APIs at scale.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-head">
+          <div>
+            <span class="job-title">Software Developer — Intern</span> —
+            <span class="job-org">Best Koki Automotive</span>
+          </div>
+          <span class="job-meta">Jan 2023 – Jul 2023</span>
+        </div>
+        <ul>
+          <li>Reduced unplanned downtime 30% via ensemble-ML anomaly detection on factory-floor signals.</li>
+          <li>Integrated RFID-based M2M communication across 20+ machines, cutting defective-part rejection from 35% to 19%.</li>
+          <li>Deployed live React dashboards on Raspberry Pi across 50+ machines and built C-level Grafana dashboards for real-time decisions.</li>
+        </ul>
+      </div>
+
+      <h2>Education</h2>
+      <div class="job">
+        <div class="job-head">
+          <div>
+            <span class="job-title">M.S. in Computer Science</span> —
+            <span class="job-org">University of Texas at Arlington</span>
+          </div>
+          <span class="job-meta">Aug 2023 – May 2025</span>
+        </div>
+      </div>
+      <div class="job">
+        <div class="job-head">
+          <div>
+            <span class="job-title">B.Tech in Computer Science (Honors)</span> —
+            <span class="job-org">Lovely Professional University</span>
+          </div>
+          <span class="job-meta">2019 – 2023</span>
+        </div>
+      </div>
+
+      <h2>Skills</h2>
+      <div class="skills">
+        <p><strong>Languages:</strong> Python, JavaScript, Scala, SQL, Shell Scripting, Java</p>
+        <p><strong>AI / ML:</strong> RAG, LLMs (OpenAI, Ollama, Local Models), LangChain, LangGraph, TensorFlow, PyTorch, NLP, Deep Learning, MLOps</p>
+        <p><strong>Web:</strong> FastAPI, REST APIs, React.js, Next.js, Node.js, HTML/CSS, Figma</p>
+        <p><strong>Data &amp; Big Data:</strong> Spark, Databricks, Tableau, Seaborn, Matplotlib, Data Mining</p>
+        <p><strong>Tools &amp; Cloud:</strong> AWS, Docker, Git, ChromaDB, Agile</p>
+      </div>
+
+      <h2>Projects</h2>
+      <div class="job">
+        <ul>
+          <li><strong>VaultRAG:</strong> secure role-aware RAG assistant on self-hosted LLMs with strict RBAC and file-level source traceability (FastAPI, ChromaDB, Ollama, LangChain).</li>
+          <li><strong>LLM YouTube Summarizer:</strong> real-time RAG video summarizer with ReAct-style LangGraph agents and LangSmith observability — 20% faster responses.</li>
+          <li><strong>Smart Submission Portal:</strong> conference management with reviewer auto-matching, payments, and live chat (React, Node.js, MySQL, AWS).</li>
+          <li><strong>Semantic Segmentation for Roads:</strong> real-time U-Net traffic-scene segmentation with K-means boundary refinement for ADAS.</li>
+        </ul>
+      </div>
+
+      <h2>Certifications</h2>
+      <ul class="certs two-col">
+        <li>Meta Front-End Developer — Meta</li>
+        <li>Career Essentials in Software Development — Microsoft</li>
+        <li>Supervised ML: Regression &amp; Classification — Stanford</li>
+      </ul>
+    </div>
+  </body>
+</html>

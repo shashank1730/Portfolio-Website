@@ -35,12 +35,13 @@ const Index = () => {
       {/* Footer */}
       <footer className="py-12 px-4 bg-card border-t-2 border-border">
         <div className="container mx-auto max-w-6xl text-center">
-          <div className="sketch-divider mb-8" />
-          <p className="font-handwritten text-muted-foreground">
-            Made with ❤️ and lots of ☕ by Shashank Nallabothu
+          <div className="sketch-divider mb-8 max-w-md mx-auto" />
+          <p className="font-display text-2xl text-primary font-bold">Shashank Nallabothu</p>
+          <p className="text-sm text-muted-foreground mt-1">
+            Forward Deployed AI Engineer · Detroit, Michigan
           </p>
-          <p className="font-handwritten text-sm text-muted-foreground mt-2">
-            © 2024 Shashank Nallabothu. All rights reserved.
+          <p className="text-sm text-muted-foreground mt-4">
+            Made with ❤️ and lots of ☕ · © {new Date().getFullYear()} Shashank Nallabothu
           </p>
         </div>
       </footer>

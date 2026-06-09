@@ -1,98 +1,129 @@
-import { Coffee, Code, Heart, MapPin } from "lucide-react";
+import { Compass, Sparkles, Rocket, MapPin } from "lucide-react";
+import { site } from "@/lib/site";
 import sketchAvatar from "@/assets/sketch-avatar.jpg";
+
 const AboutSection = () => {
-  const quickFacts = [{
-    icon: <Code className="h-5 w-5" />,
-    label: "Favorite Stack",
-    value: "React + FastAPI + RAG/LLMs"
-  }, {
-    icon: <Coffee className="h-5 w-5" />,
-    label: "Currently Learning",
-    value: "LangGraph & Agentic AI"
-  }, {
-    icon: <Heart className="h-5 w-5" />,
-    label: "Experience",
-    value: "5+ Years Development"
-  }, {
-    icon: <MapPin className="h-5 w-5" />,
-    label: "Based In",
-    value: "Arlington, TX"
-  }];
-  return <section className="py-20 px-4">
+  const quickFacts = [
+    {
+      icon: <Compass className="h-5 w-5" />,
+      label: "Beyond the Stack",
+      value: "The 'favorite stack' era is over — I think product first, tools second.",
+    },
+    {
+      icon: <Sparkles className="h-5 w-5" />,
+      label: "Currently",
+      value: "Going 100% AI-Native",
+    },
+    {
+      icon: <Rocket className="h-5 w-5" />,
+      label: "What I Do",
+      value: "Ship production AI products, end-to-end",
+    },
+    {
+      icon: <MapPin className="h-5 w-5" />,
+      label: "Based In",
+      value: site.location,
+    },
+  ];
+
+  const playground = [
+    "LangGraph", "LangChain", "RAG", "FastAPI", "React.js", "Next.js",
+    "OpenAI", "Ollama", "ChromaDB", "Evals", "AWS",
+  ];
+
+  return (
+    <section className="py-24 px-4">
       <div className="container mx-auto max-w-6xl">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-5xl font-sketch font-bold mb-4 sketch-underline">
-            About Me
+          <span className="eyebrow mb-4">About Me</span>
+          <h2 className="text-5xl md:text-6xl font-display font-bold mt-4">
+            The story behind the code
           </h2>
-          <div className="sketch-divider" />
+          <div className="sketch-divider max-w-md mx-auto" />
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12 items-start">
+        <div className="grid lg:grid-cols-5 gap-10 items-start">
           {/* Avatar and Story */}
-          <div className="space-y-8">
-            <div className="flex justify-center md:justify-start">
-              <div className="sketch-card w-64 h-64 p-4">
-                <img src={sketchAvatar} alt="Shashank Nallabothu - Sketch Avatar" className="w-full h-full object-cover rounded-lg" />
+          <div className="lg:col-span-3 space-y-8">
+            <div className="flex flex-col sm:flex-row gap-6 items-center sm:items-start">
+              <div className="sketch-card shrink-0 w-44 h-44 p-3 rotate-[-2deg]">
+                <img
+                  src={sketchAvatar}
+                  alt="Shashank Nallabothu"
+                  className="w-full h-full object-cover rounded-xl"
+                />
+              </div>
+              <div className="space-y-3 text-center sm:text-left">
+                <h3 className="text-3xl font-display font-bold text-primary">
+                  Hey, I'm Shashank 👋
+                </h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  A <span className="text-foreground font-semibold">Forward Deployed AI Engineer</span> who
+                  ships AI-powered products that solve real, messy, real-world problems — across
+                  mortgage, insurance, and HRTech.
+                </p>
               </div>
             </div>
-            
+
             <div className="sketch-card space-y-4">
-              <h3 className="text-2xl font-sketch font-semibold text-primary">
-                The Story Behind the Code
-              </h3>
-              <div className="space-y-4 text-lg leading-relaxed">
+              <div className="space-y-4 text-[1.05rem] leading-relaxed text-muted-foreground">
                 <p>
-                  Hey there! I'm Shashank, a passionate Full Stack AI Engineer with 5+ years of experience 
-                  creating AI-powered applications that solve real-world problems. I'm skilled in RAG pipelines, 
-                  LangChain/LangGraph, and deploying scalable LLM systems.
+                  I sit close to the user — embedding with teams, turning fuzzy requirements into
+                  <span className="text-foreground font-semibold"> production-grade systems</span> with
+                  RAG pipelines, multi-agent orchestration (LangChain / LangGraph), and rigorous
+                  evals that keep things reliable.
                 </p>
-                <p>Completed my Master's in Computer Science at UT Arlington with a perfect 4.0 GPA, I combine strong web development expertise (React, FastAPI) with a proven track record of improving efficiency and decision-making in HRTech, sales, and manufacturing domains.</p>
                 <p>
-                  From automating resume screening that cuts HR review time by 65% to building predictive 
-                  maintenance systems that reduce downtime by 30%, I love turning complex AI capabilities 
-                  into user-friendly solutions that make a real impact! 🚀
+                  I care less about the framework of the week and more about
+                  <span className="text-foreground font-semibold"> outcomes</span> — cutting review
+                  time, dropping costs, and making complex AI feel effortless.
+                </p>
+                <p className="text-foreground font-semibold">
+                  Basically: a product person who can also ship the code. 🚀
                 </p>
               </div>
             </div>
           </div>
 
           {/* Quick Facts */}
-          <div className="space-y-6">
-            <h3 className="text-3xl font-sketch font-semibold text-center md:text-left mb-8">
-              Quick Facts About Me
-            </h3>
-            
+          <div className="lg:col-span-2 space-y-6">
+            <h3 className="text-2xl font-display font-bold">Quick facts</h3>
+
             <div className="grid gap-4">
-              {quickFacts.map((fact, index) => <div key={index} className="sketch-card flex items-center gap-4 p-6 hover:shadow-hover transition-all duration-300">
-                  <div className="p-3 rounded-full bg-primary/10 text-primary">
+              {quickFacts.map((fact, index) => (
+                <div key={index} className="sketch-card flex items-start gap-4 p-5">
+                  <div className="p-3 rounded-xl bg-primary/10 text-primary shrink-0">
                     {fact.icon}
                   </div>
                   <div>
-                    <p className="font-sketch text-sm text-muted-foreground">
+                    <p className="text-xs uppercase tracking-wide text-muted-foreground font-semibold">
                       {fact.label}
                     </p>
-                    <p className="font-handwritten text-lg font-semibold">
-                      {fact.value}
-                    </p>
+                    <p className="text-foreground font-medium mt-0.5">{fact.value}</p>
                   </div>
-                </div>)}
+                </div>
+              ))}
             </div>
-            
-            {/* Tech Stack Highlight */}
+
+            {/* Playground */}
             <div className="sketch-card p-6 bg-primary/5 border-primary/20">
-              <h4 className="font-sketch text-xl font-semibold mb-4 text-primary">
+              <h4 className="text-xl font-display font-bold mb-4 text-primary">
                 My Playground 🛠️
               </h4>
               <div className="flex flex-wrap gap-2">
-                {['React.js', 'FastAPI', 'LangChain', 'LangGraph', 'RAG', 'OpenAI', 'AWS', 'ChromaDB'].map(tech => <span key={tech} className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-handwritten border border-primary/20">
+                {playground.map((tech) => (
+                  <span key={tech} className="chip chip-primary">
                     {tech}
-                  </span>)}
+                  </span>
+                ))}
               </div>
             </div>
           </div>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default AboutSection;

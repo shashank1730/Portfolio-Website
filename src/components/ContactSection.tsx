@@ -1,200 +1,193 @@
 import { useState } from "react";
-import { Mail, MessageSquare, Send, Github, Linkedin, Twitter, MapPin, Phone } from "lucide-react";
+import { Mail, MessageSquare, Send, Github, Linkedin, MapPin, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import { site, buildMailto } from "@/lib/site";
 
 const ContactSection = () => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate form submission
+
+    const subject = formData.subject || `New message from ${formData.name}`;
+    const body = `Hi Shashank,\n\n${formData.message}\n\n— ${formData.name}${
+      formData.email ? `\n${formData.email}` : ""
+    }`;
+
+    window.location.href = buildMailto({ subject, body });
+
     toast({
-      title: "Message sent! 🎉",
-      description: "Thanks for reaching out! I'll get back to you within 24 hours.",
+      title: "Opening your email app ✉️",
+      description: "Your message is pre-filled — just hit send!",
     });
-    setFormData({ name: '', email: '', subject: '', message: '' });
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData(prev => ({
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setFormData((prev) => ({
       ...prev,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     }));
   };
 
   const socialLinks = [
     {
+      icon: <Mail className="h-6 w-6" />,
+      label: "Email",
+      url: buildMailto({ subject: "Let's connect!" }),
+      username: site.email,
+    },
+    {
       icon: <Github className="h-6 w-6" />,
-      label: 'GitHub',
-      url: 'https://github.com/shashank1730',
-      username: '@shashank1730'
+      label: "GitHub",
+      url: site.github,
+      username: "@shashank1730",
     },
     {
       icon: <Linkedin className="h-6 w-6" />,
-      label: 'LinkedIn',
-      url: 'https://linkedin.com/in/shashank1730',
-      username: 'Shashank Nallabothu'
+      label: "LinkedIn",
+      url: site.linkedin,
+      username: "Shashank Nallabothu",
     },
-    {
-      icon: <Twitter className="h-6 w-6" />,
-      label: 'Twitter',
-      url: 'https://twitter.com/shashank1730',
-      username: '@shashank1730'
-    },
-    {
-      icon: <Mail className="h-6 w-6" />,
-      label: 'Email',
-      url: 'mailto:nallabothushashank125@gmail.com',
-      username: 'nallabothushashank125@gmail.com'
-    }
   ];
 
   return (
-    <section className="py-20 px-4 bg-gradient-paper">
+    <section className="py-24 px-4">
       <div className="container mx-auto max-w-6xl">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-5xl font-sketch font-bold mb-4 sketch-underline">
-            Let's Chat!
-          </h2>
-          <p className="text-xl text-muted-foreground font-handwritten max-w-2xl mx-auto">
-            Got a project in mind? Want to collaborate? Or just want to say hi? 
-            Drop me a message! ✉️
+          <span className="eyebrow mb-4">Contact</span>
+          <h2 className="text-5xl md:text-6xl font-display font-bold mt-4">Let's chat!</h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mt-3">
+            Got a project in mind, want to collaborate, or just want to say hi? Drop me a message. ✉️
           </p>
-          <div className="sketch-divider" />
+          <div className="sketch-divider max-w-md mx-auto" />
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid lg:grid-cols-2 gap-8">
           {/* Contact Form */}
-          <div className="space-y-8">
-            <div className="sketch-card p-8">
-              <div className="flex items-center gap-3 mb-6">
-                <MessageSquare className="h-8 w-8 text-primary" />
-                <h3 className="text-3xl font-sketch font-semibold">
-                  Send me a message
-                </h3>
+          <div className="sketch-card p-8">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="p-2.5 rounded-xl bg-primary/10 text-primary">
+                <MessageSquare className="h-6 w-6" />
+              </div>
+              <h3 className="text-2xl font-display font-bold">Send me a message</h3>
+            </div>
+
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <div className="grid sm:grid-cols-2 gap-4">
+                <div className="space-y-1.5">
+                  <label className="text-sm font-semibold">Your Name</label>
+                  <Input
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    placeholder="Ada Lovelace"
+                    required
+                  />
+                </div>
+                <div className="space-y-1.5">
+                  <label className="text-sm font-semibold">Email Address</label>
+                  <Input
+                    name="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="you@example.com"
+                    required
+                  />
+                </div>
               </div>
 
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid sm:grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <label className="font-handwritten text-sm font-semibold">
-                      Your Name
-                    </label>
-                    <Input
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      placeholder="Alex Morgan"
-                      className="sketch-border font-handwritten"
-                      required
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <label className="font-handwritten text-sm font-semibold">
-                      Email Address
-                    </label>
-                    <Input
-                      name="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      placeholder="alex@example.com"
-                      className="sketch-border font-handwritten"
-                      required
-                    />
-                  </div>
-                </div>
+              <div className="space-y-1.5">
+                <label className="text-sm font-semibold">Subject</label>
+                <Input
+                  name="subject"
+                  value={formData.subject}
+                  onChange={handleChange}
+                  placeholder="Let's build something amazing!"
+                  required
+                />
+              </div>
 
-                <div className="space-y-2">
-                  <label className="font-handwritten text-sm font-semibold">
-                    Subject
-                  </label>
-                  <Input
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleChange}
-                    placeholder="Let's build something amazing!"
-                    className="sketch-border font-handwritten"
-                    required
-                  />
-                </div>
+              <div className="space-y-1.5">
+                <label className="text-sm font-semibold">Message</label>
+                <Textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  placeholder="Tell me about your project, idea, or just say hello..."
+                  rows={6}
+                  className="resize-none"
+                  required
+                />
+              </div>
 
-                <div className="space-y-2">
-                  <label className="font-handwritten text-sm font-semibold">
-                    Message
-                  </label>
-                  <Textarea
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    placeholder="Tell me about your project, ideas, or just say hello! I'd love to hear from you..."
-                    rows={6}
-                    className="sketch-border font-handwritten resize-none"
-                    required
-                  />
-                </div>
-
-                <Button type="submit" className="btn-sketch-primary w-full text-lg py-6">
-                  <Send className="mr-2 h-5 w-5" />
-                  Send Message
-                </Button>
-              </form>
-            </div>
+              <Button type="submit" className="btn-sketch-primary w-full text-lg py-6">
+                <Send className="mr-2 h-5 w-5" />
+                Send Message
+              </Button>
+            </form>
           </div>
 
           {/* Contact Info & Social */}
-          <div className="space-y-8">
+          <div className="space-y-6">
             {/* Contact Info */}
             <div className="sketch-card p-8">
-              <h3 className="text-3xl font-sketch font-semibold mb-6 flex items-center gap-3">
-                <Mail className="h-8 w-8 text-primary" />
+              <h3 className="text-2xl font-display font-bold mb-6 flex items-center gap-3">
+                <div className="p-2.5 rounded-xl bg-primary/10 text-primary">
+                  <Mail className="h-6 w-6" />
+                </div>
                 Get in touch
               </h3>
-              
-              <div className="space-y-6">
-                <div className="flex items-center gap-4">
-                  <div className="p-3 rounded-full bg-primary/10 text-primary">
+
+              <div className="space-y-5">
+                <a
+                  href={buildMailto({ subject: "Let's connect!" })}
+                  className="flex items-center gap-4 group"
+                >
+                  <div className="p-3 rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
                     <Mail className="h-5 w-5" />
                   </div>
                   <div>
-                    <p className="font-handwritten text-sm text-muted-foreground">Email</p>
-                    <a href="mailto:nallabothushashank125@gmail.com" className="font-handwritten text-lg font-semibold sketch-underline">
-                      nallabothushashank125@gmail.com
-                    </a>
+                    <p className="text-xs uppercase tracking-wide text-muted-foreground font-semibold">
+                      Email
+                    </p>
+                    <p className="font-medium sketch-underline">{site.email}</p>
                   </div>
-                </div>
+                </a>
 
                 <div className="flex items-center gap-4">
-                  <div className="p-3 rounded-full bg-primary/10 text-primary">
+                  <div className="p-3 rounded-xl bg-primary/10 text-primary">
                     <Phone className="h-5 w-5" />
                   </div>
                   <div>
-                    <p className="font-handwritten text-sm text-muted-foreground">Phone</p>
-                    <a href="tel:+1234567890" className="font-handwritten text-lg font-semibold sketch-underline">
-                      Available on request
-                    </a>
+                    <p className="text-xs uppercase tracking-wide text-muted-foreground font-semibold">
+                      Phone
+                    </p>
+                    <p className="font-medium">Available on request</p>
                   </div>
                 </div>
 
                 <div className="flex items-center gap-4">
-                  <div className="p-3 rounded-full bg-primary/10 text-primary">
+                  <div className="p-3 rounded-xl bg-primary/10 text-primary">
                     <MapPin className="h-5 w-5" />
                   </div>
                   <div>
-                    <p className="font-handwritten text-sm text-muted-foreground">Location</p>
-                    <p className="font-handwritten text-lg font-semibold">
-                      Arlington, TX
+                    <p className="text-xs uppercase tracking-wide text-muted-foreground font-semibold">
+                      Location
                     </p>
+                    <p className="font-medium">{site.location}</p>
                   </div>
                 </div>
               </div>
@@ -202,43 +195,27 @@ const ContactSection = () => {
 
             {/* Social Links */}
             <div className="sketch-card p-8">
-              <h3 className="text-3xl font-sketch font-semibold mb-6">
-                Find me online
-              </h3>
-              
-              <div className="grid gap-4">
+              <h3 className="text-2xl font-display font-bold mb-6">Find me online</h3>
+
+              <div className="grid gap-3">
                 {socialLinks.map((social, index) => (
                   <a
                     key={index}
                     href={social.url}
-                    className="flex items-center gap-4 p-4 rounded-lg border-2 border-border hover:border-primary hover:bg-primary/5 transition-all duration-300 group"
+                    target={social.url.startsWith("http") ? "_blank" : undefined}
+                    rel={social.url.startsWith("http") ? "noreferrer" : undefined}
+                    className="flex items-center gap-4 p-4 rounded-xl border-2 border-border hover:border-primary hover:bg-primary/5 transition-all duration-300 group"
                   >
-                    <div className="p-2 rounded-full bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                    <div className="p-2 rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
                       {social.icon}
                     </div>
                     <div>
-                      <p className="font-handwritten font-semibold">
-                        {social.label}
-                      </p>
-                      <p className="font-handwritten text-sm text-muted-foreground">
-                        {social.username}
-                      </p>
+                      <p className="font-semibold">{social.label}</p>
+                      <p className="text-sm text-muted-foreground">{social.username}</p>
                     </div>
                   </a>
                 ))}
               </div>
-            </div>
-
-            {/* Fun Note */}
-            <div className="sketch-card p-6 bg-primary/5 border-primary/20">
-              <h4 className="font-sketch text-xl font-semibold mb-3 text-primary">
-                ☕ Coffee Chat?
-              </h4>
-              <p className="font-handwritten text-muted-foreground leading-relaxed">
-                I'm always up for a virtual coffee chat to discuss new ideas, 
-                potential collaborations, or just to geek out about the latest 
-                in AI and web development!
-              </p>
             </div>
           </div>
         </div>
