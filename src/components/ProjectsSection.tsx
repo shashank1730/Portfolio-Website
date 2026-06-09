@@ -8,7 +8,6 @@ type Project = {
   tags: string[];
   category: string;
   emoji: string;
-  gradient: string;
   impact: string;
   kind: "Work" | "Personal";
   liveUrl?: string;
@@ -29,7 +28,6 @@ const ProjectsSection = () => {
       tags: ["LLMs", "OCR", "Prompt Tuning", "Evals"],
       category: "AI Agents",
       emoji: "🏦",
-      gradient: "from-orange-500/20 to-amber-400/10",
       impact: "End-to-end loan automation",
       kind: "Work",
       confidential: true,
@@ -41,7 +39,6 @@ const ProjectsSection = () => {
       tags: ["LangGraph", "Vision-Language", "Chroma", "Groq"],
       category: "AI Agents",
       emoji: "🛡️",
-      gradient: "from-sky-500/20 to-cyan-400/10",
       impact: "~70% less manual review",
       kind: "Work",
       confidential: true,
@@ -53,7 +50,6 @@ const ProjectsSection = () => {
       tags: ["Next.js", "LangGraph", "ChromaDB", "RAG"],
       category: "Full Stack",
       emoji: "📄",
-      gradient: "from-violet-500/20 to-fuchsia-400/10",
       impact: "65% faster HR review",
       kind: "Work",
       confidential: true,
@@ -65,7 +61,6 @@ const ProjectsSection = () => {
       tags: ["FastAPI", "ChromaDB", "Ollama", "RBAC"],
       category: "RAG",
       emoji: "🔐",
-      gradient: "from-emerald-500/20 to-teal-400/10",
       impact: "Compliant, self-governed AI",
       kind: "Personal",
       githubUrl: "https://github.com/shashank1730",
@@ -77,7 +72,6 @@ const ProjectsSection = () => {
       tags: ["LangGraph", "FastAPI", "LangSmith", "Ollama"],
       category: "RAG",
       emoji: "▶️",
-      gradient: "from-rose-500/20 to-orange-400/10",
       impact: "20% faster responses",
       kind: "Personal",
       githubUrl: "https://github.com/shashank1730",
@@ -89,7 +83,6 @@ const ProjectsSection = () => {
       tags: ["React.js", "Node.js", "MySQL", "AWS"],
       category: "Full Stack",
       emoji: "📝",
-      gradient: "from-indigo-500/20 to-blue-400/10",
       impact: "Reviewer auto-matching",
       kind: "Personal",
       githubUrl: "https://github.com/shashank1730",
@@ -101,7 +94,6 @@ const ProjectsSection = () => {
       tags: ["Anomaly Detection", "RFID", "Python", "React"],
       category: "ML & Vision",
       emoji: "🏭",
-      gradient: "from-amber-500/20 to-yellow-400/10",
       impact: "−30% unplanned downtime",
       kind: "Work",
       confidential: true,
@@ -113,7 +105,6 @@ const ProjectsSection = () => {
       tags: ["React.js", "Grafana", "Raspberry Pi", "Linux"],
       category: "Full Stack",
       emoji: "📊",
-      gradient: "from-teal-500/20 to-green-400/10",
       impact: "50+ machines monitored",
       kind: "Work",
       confidential: true,
@@ -125,7 +116,6 @@ const ProjectsSection = () => {
       tags: ["U-Net", "PyTorch", "Scikit-Learn", "Computer Vision"],
       category: "ML & Vision",
       emoji: "🛣️",
-      gradient: "from-slate-500/20 to-cyan-400/10",
       impact: "Pixel-level scene parsing",
       kind: "Personal",
       githubUrl: "https://github.com/shashank1730",
@@ -139,7 +129,7 @@ const ProjectsSection = () => {
 
   return (
     <section className="py-24 px-4">
-      <div className="container mx-auto max-w-6xl">
+      <div className="section-shell">
         {/* Section Header */}
         <div className="text-center mb-12">
           <span className="eyebrow mb-4">My Work</span>
@@ -180,16 +170,14 @@ const ProjectsSection = () => {
               style={{ animationDelay: `${index * 60}ms` }}
             >
               {/* Header band */}
-              <div
-                className={`relative h-32 bg-gradient-to-br ${project.gradient} flex items-center justify-center`}
-              >
+              <div className="relative h-32 border-b-2 border-border bg-secondary/55 flex items-center justify-center">
                 <span className="text-5xl transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6">
                   {project.emoji}
                 </span>
-                <span className="absolute top-3 left-3 chip bg-card/80 backdrop-blur-sm border-border text-foreground">
+                <span className="absolute top-3 left-3 chip bg-card border-border text-foreground">
                   {project.kind}
                 </span>
-                <span className="absolute bottom-3 left-3 inline-flex items-center gap-1.5 text-xs font-semibold text-foreground bg-card/85 backdrop-blur-sm px-2.5 py-1 rounded-full border border-border">
+                <span className="absolute bottom-3 left-3 inline-flex items-center gap-1.5 text-xs font-semibold text-foreground bg-card px-2.5 py-1 rounded-full border border-border">
                   <TrendingUp className="h-3.5 w-3.5 text-primary" />
                   {project.impact}
                 </span>
@@ -255,7 +243,7 @@ const ProjectsSection = () => {
 
         {/* Call to Action */}
         <div className="text-center mt-16">
-          <div className="sketch-card max-w-2xl mx-auto p-8 bg-primary/5 border-primary/20">
+          <div className="sketch-card max-w-2xl mx-auto p-8 bg-card border-foreground">
             <h3 className="text-3xl md:text-4xl font-display font-bold mb-3 text-primary">
               Got an idea? Let's build it 🚀
             </h3>

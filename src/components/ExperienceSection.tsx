@@ -102,7 +102,7 @@ const ExperienceSection = () => {
 
   return (
     <section className="py-24 px-4">
-      <div className="container mx-auto max-w-6xl">
+      <div className="section-shell">
         {/* Section Header */}
         <div className="text-center mb-12">
           <span className="eyebrow mb-4">Experience & Skills</span>
@@ -127,7 +127,7 @@ const ExperienceSection = () => {
         {/* Impact stats */}
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-16">
           {impact.map((stat) => (
-            <div key={stat.label} className="sketch-card p-5 text-center">
+            <div key={stat.label} className="sketch-card p-5 text-center bg-card">
               <p className="text-4xl font-display font-bold text-primary">{stat.value}</p>
               <p className="text-sm text-muted-foreground mt-1">{stat.label}</p>
             </div>
@@ -146,8 +146,8 @@ const ExperienceSection = () => {
                   <div
                     className={`absolute left-0 top-1 flex items-center justify-center w-11 h-11 rounded-full border-2 ${
                       exp.type === "education"
-                        ? "bg-accent/10 text-accent border-accent/30"
-                        : "bg-primary/10 text-primary border-primary/30"
+                        ? "bg-card text-foreground border-foreground"
+                        : "bg-foreground text-background border-foreground"
                     }`}
                   >
                     {exp.type === "education" ? (
@@ -214,7 +214,7 @@ const ExperienceSection = () => {
             </div>
 
             {/* Certifications */}
-            <div className="sketch-card p-6 bg-primary/5 border-primary/20">
+            <div className="sketch-card p-6 bg-foreground text-background border-foreground">
               <h4 className="text-xl font-display font-bold mb-4 text-primary">
                 Certifications 🎓
               </h4>
@@ -224,7 +224,7 @@ const ExperienceSection = () => {
                     <BadgeCheck className="h-4 w-4 text-primary mt-0.5 shrink-0" />
                     <div>
                       <p className="text-sm font-semibold leading-tight">{cert.name}</p>
-                      <p className="text-xs text-muted-foreground">{cert.issuer}</p>
+                      <p className="text-xs text-background/65">{cert.issuer}</p>
                     </div>
                   </div>
                 ))}

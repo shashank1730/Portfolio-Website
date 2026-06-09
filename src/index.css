@@ -17,7 +17,7 @@
     --popover-foreground: 222 22% 14%;
 
     /* Highlighter orange accent */
-    --primary: 22 90% 55%; /* Confident orange */
+    --primary: 20 72% 42%; /* Restrained highlighter orange */
     --primary-foreground: 40 33% 98%;
 
     /* Pencil grays */
@@ -27,8 +27,8 @@
     --muted: 220 14% 94%;
     --muted-foreground: 220 9% 42%;
 
-    /* Ink accent (deep teal-blue) for contrast & modern feel */
-    --accent: 200 75% 38%;
+    /* Ink accent */
+    --accent: 222 22% 14%;
     --accent-foreground: 40 33% 98%;
 
     --destructive: 0 75% 55%;
@@ -36,7 +36,7 @@
 
     --border: 222 16% 88%; /* Soft sketch line */
     --input: 222 16% 90%;
-    --ring: 22 90% 55%;
+    --ring: 20 72% 42%;
 
     --radius: 1rem;
 
@@ -46,15 +46,15 @@
     --sketch-medium: 220 12% 72%;
     --sketch-dark: 222 28% 18%;
 
-    /* Gradients */
-    --gradient-paper: radial-gradient(circle at 20% 15%, hsl(40 40% 98%), hsl(40 28% 95%));
-    --gradient-sketch: linear-gradient(100deg, hsl(22 90% 55%), hsl(32 92% 60%));
-    --gradient-ink: linear-gradient(135deg, hsl(200 75% 38%), hsl(205 70% 45%));
+    /* Legacy aliases kept flat to avoid glow/gradient styling */
+    --gradient-paper: hsl(40 33% 97%);
+    --gradient-sketch: hsl(20 72% 42%);
+    --gradient-ink: hsl(222 22% 14%);
 
     /* Shadows for lifted paper feel */
     --shadow-sketch: 0 4px 6px -1px hsl(222 22% 14% / 0.08), 0 2px 4px -2px hsl(222 22% 14% / 0.06);
     --shadow-card: 0 10px 30px -12px hsl(222 22% 14% / 0.18);
-    --shadow-hover: 0 18px 40px -16px hsl(22 90% 55% / 0.35);
+    --shadow-hover: 0 18px 40px -18px hsl(222 22% 14% / 0.24);
 
     --ease-sketch: cubic-bezier(0.23, 1, 0.32, 1);
   }
@@ -104,8 +104,7 @@
     @apply bg-background text-foreground;
     font-family: 'Inter', system-ui, sans-serif;
     background-color: hsl(var(--background));
-    background-image:
-      radial-gradient(hsl(var(--foreground) / 0.05) 1px, transparent 1px);
+    background-image: radial-gradient(hsl(var(--foreground) / 0.055) 1px, transparent 1px);
     background-size: 22px 22px;
     -webkit-font-smoothing: antialiased;
   }
@@ -144,7 +143,7 @@
 
   /* Section dividers */
   .sketch-divider {
-    @apply w-full h-px bg-gradient-to-r from-transparent via-border to-transparent my-8;
+    @apply w-full h-px bg-border my-8;
     position: relative;
   }
 
@@ -207,5 +206,50 @@
 
   .font-hand {
     font-family: 'Patrick Hand', cursive;
+  }
+
+  .section-shell {
+    @apply container mx-auto max-w-7xl px-4;
+  }
+
+  .glass-card {
+    @apply relative overflow-hidden rounded-[2rem] border-2 border-foreground bg-card shadow-card;
+  }
+
+  .glass-card::before {
+    content: '';
+    @apply pointer-events-none absolute inset-x-0 top-0 h-1 bg-foreground;
+  }
+
+  .bento-card {
+    @apply relative overflow-hidden rounded-[1.75rem] border-2 border-border bg-card/85 p-6 shadow-card transition-all duration-300;
+  }
+
+  .bento-card:hover {
+    @apply -translate-y-1 border-primary/50;
+    box-shadow: var(--shadow-hover);
+  }
+
+  .gradient-text {
+    @apply text-primary;
+  }
+
+  .grid-glow {
+    background-image:
+      linear-gradient(hsl(var(--foreground) / 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--foreground) / 0.05) 1px, transparent 1px);
+    background-size: 34px 34px;
+  }
+
+  .orb {
+    @apply hidden;
+  }
+
+  .metric-card {
+    @apply rounded-2xl border-2 border-border bg-card/80 p-4 shadow-sketch backdrop-blur-sm;
+  }
+
+  .timeline-spine {
+    @apply absolute left-5 top-0 bottom-0 w-px bg-border;
   }
 }

@@ -63,7 +63,7 @@ const ContactSection = () => {
 
   return (
     <section className="py-24 px-4">
-      <div className="container mx-auto max-w-6xl">
+      <div className="section-shell">
         {/* Section Header */}
         <div className="text-center mb-16">
           <span className="eyebrow mb-4">Contact</span>
@@ -78,7 +78,7 @@ const ContactSection = () => {
           {/* Contact Form */}
           <div className="sketch-card p-8">
             <div className="flex items-center gap-3 mb-6">
-              <div className="p-2.5 rounded-xl bg-primary/10 text-primary">
+              <div className="p-2.5 rounded-xl border-2 border-foreground bg-card text-foreground">
                 <MessageSquare className="h-6 w-6" />
               </div>
               <h3 className="text-2xl font-display font-bold">Send me a message</h3>
@@ -145,7 +145,7 @@ const ContactSection = () => {
             {/* Contact Info */}
             <div className="sketch-card p-8">
               <h3 className="text-2xl font-display font-bold mb-6 flex items-center gap-3">
-                <div className="p-2.5 rounded-xl bg-primary/10 text-primary">
+                <div className="p-2.5 rounded-xl border-2 border-foreground bg-card text-foreground">
                   <Mail className="h-6 w-6" />
                 </div>
                 Get in touch
@@ -156,7 +156,7 @@ const ContactSection = () => {
                   href={buildMailto({ subject: "Let's connect!" })}
                   className="flex items-center gap-4 group"
                 >
-                  <div className="p-3 rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                  <div className="p-3 rounded-xl border-2 border-foreground bg-card text-foreground group-hover:bg-foreground group-hover:text-background transition-colors">
                     <Mail className="h-5 w-5" />
                   </div>
                   <div>
@@ -168,7 +168,7 @@ const ContactSection = () => {
                 </a>
 
                 <div className="flex items-center gap-4">
-                  <div className="p-3 rounded-xl bg-primary/10 text-primary">
+                  <div className="p-3 rounded-xl border-2 border-foreground bg-card text-foreground">
                     <Phone className="h-5 w-5" />
                   </div>
                   <div>
@@ -180,7 +180,7 @@ const ContactSection = () => {
                 </div>
 
                 <div className="flex items-center gap-4">
-                  <div className="p-3 rounded-xl bg-primary/10 text-primary">
+                  <div className="p-3 rounded-xl border-2 border-foreground bg-card text-foreground">
                     <MapPin className="h-5 w-5" />
                   </div>
                   <div>
@@ -204,9 +204,9 @@ const ContactSection = () => {
                     href={social.url}
                     target={social.url.startsWith("http") ? "_blank" : undefined}
                     rel={social.url.startsWith("http") ? "noreferrer" : undefined}
-                    className="flex items-center gap-4 p-4 rounded-xl border-2 border-border hover:border-primary hover:bg-primary/5 transition-all duration-300 group"
+                    className="flex items-center gap-4 p-4 rounded-xl border-2 border-border hover:border-foreground hover:bg-secondary/60 transition-all duration-300 group"
                   >
-                    <div className="p-2 rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                    <div className="p-2 rounded-xl border-2 border-foreground bg-card text-foreground group-hover:bg-foreground group-hover:text-background transition-colors">
                       {social.icon}
                     </div>
                     <div>
