@@ -4,6 +4,7 @@ import AboutSection from "@/components/AboutSection";
 import ProjectsSection from "@/components/ProjectsSection";
 import ExperienceSection from "@/components/ExperienceSection";
 import ContactSection from "@/components/ContactSection";
+import NotebookPage from "@/components/NotebookPage";
 
 const Index = () => {
   return (
@@ -11,29 +12,29 @@ const Index = () => {
       <Navigation />
       
       <main className="notebook-stack">
-        <section id="home" className="notebook-page notebook-page-hero">
+        <NotebookPage id="home" fold={false}>
           <HeroSection />
-        </section>
-        
-        <section id="about" className="notebook-page page-fold">
+        </NotebookPage>
+
+        <NotebookPage id="about">
           <AboutSection />
-        </section>
-        
-        <section id="projects" className="notebook-page page-fold">
+        </NotebookPage>
+
+        <NotebookPage id="projects">
           <ProjectsSection />
-        </section>
-        
-        <section id="experience" className="notebook-page page-fold">
+        </NotebookPage>
+
+        <NotebookPage id="experience">
           <ExperienceSection />
-        </section>
-        
-        <section id="contact" className="notebook-page page-fold">
+        </NotebookPage>
+
+        <NotebookPage id="contact">
           <ContactSection />
-        </section>
+        </NotebookPage>
       </main>
 
       {/* Footer */}
-      <footer className="notebook-page page-fold py-12 px-4 bg-card border-t-2 border-border">
+      <footer className="py-12 px-4 bg-card border-t-2 border-border">
         <div className="container mx-auto max-w-6xl text-center">
           <div className="sketch-divider mb-8 max-w-md mx-auto" />
           <p className="font-display text-2xl text-primary font-bold">Shashank Nallabothu</p>

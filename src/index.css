@@ -256,109 +256,59 @@
   /* Notebook continuity across the whole portfolio */
   .notebook-stack {
     @apply relative;
-    perspective: 1800px;
+    perspective: 1600px;
   }
 
   .notebook-page {
     @apply relative overflow-hidden;
     background-color: hsl(var(--background));
     background-image:
-      linear-gradient(90deg, hsl(var(--foreground) / 0.055) 1px, transparent 1px),
-      linear-gradient(hsl(var(--foreground) / 0.055) 1px, transparent 1px);
-    background-size: 22px 22px;
-    box-shadow:
-      inset 0 1px 0 hsl(0 0% 100% / 0.8),
-      0 -1px 0 hsl(var(--border) / 0.8);
-    transform-style: preserve-3d;
+      linear-gradient(90deg, hsl(var(--foreground) / 0.05) 1px, transparent 1px),
+      linear-gradient(hsl(var(--foreground) / 0.05) 1px, transparent 1px);
+    background-size: 24px 24px;
+    border-top: 1px solid hsl(var(--border));
+    box-shadow: 0 -14px 30px -22px hsl(var(--foreground) / 0.35);
   }
 
+  /* Paper margin band sitting behind the spiral binding */
   .notebook-page::before {
     content: '';
-    @apply pointer-events-none absolute inset-y-0 left-0 z-0 hidden w-[74px] md:block;
-    background:
-      radial-gradient(circle at 30px 38px, transparent 0 9px, hsl(var(--foreground) / 0.17) 10px 12px, transparent 13px),
-      radial-gradient(circle at 31px 38px, hsl(var(--background)) 0 6px, transparent 7px),
-      linear-gradient(90deg, hsl(var(--foreground) / 0.08), transparent 74%);
-    background-size: 74px 92px, 74px 92px, 100% 100%;
-    filter: drop-shadow(0 1px 0 hsl(0 0% 100% / 0.75));
+    @apply pointer-events-none absolute inset-y-0 left-0 z-[1] hidden w-[62px] md:block;
+    background-color: hsl(var(--secondary) / 0.55);
+    border-right: 2px solid hsl(var(--primary) / 0.28);
   }
 
-  .notebook-page::after {
-    content: '';
-    @apply pointer-events-none absolute right-0 top-0 z-10 h-24 w-24 opacity-70;
-    background:
-      linear-gradient(135deg, transparent 0 49%, hsl(var(--border)) 50%, hsl(var(--background)) 51%),
-      linear-gradient(135deg, hsl(0 0% 100% / 0.75), hsl(var(--foreground) / 0.06));
-    clip-path: polygon(100% 0, 100% 100%, 0 0);
-    transform-origin: top right;
-    box-shadow: -10px 10px 22px hsl(var(--foreground) / 0.08);
+  /* Shared faint doodle layer (same art as the hero) tying the theme together */
+  .notebook-doodles {
+    @apply pointer-events-none absolute inset-0 z-0;
+    background-image: url('./assets/hero-background.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.045;
   }
 
-  .notebook-page > * {
-    @apply relative z-[1];
+  /* The visible spiral binding — a tiling ring loop down the margin */
+  .notebook-binding {
+    @apply pointer-events-none absolute inset-y-0 left-0 z-[2] hidden w-[62px] md:block;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='34'%3E%3Cellipse cx='22' cy='17' rx='13' ry='7' fill='none' stroke='%2326292f' stroke-width='2.6' transform='rotate(-13 22 17)'/%3E%3Cellipse cx='22' cy='17' rx='13' ry='7' fill='none' stroke='%23ffffff' stroke-opacity='0.5' stroke-width='1' transform='rotate(-13 22 16)'/%3E%3C/svg%3E");
+    background-repeat: repeat-y;
+    background-position: 8px 14px;
+    background-size: 40px 34px;
   }
 
-  .notebook-page-hero::after {
-    @apply opacity-30;
+  .notebook-content {
+    @apply relative z-[3];
   }
 
-  .page-fold {
-    transform-origin: top center;
-  }
-
-  @supports (animation-timeline: view()) {
-    .page-fold {
-      animation: sheet-fold-in linear both;
-      animation-timeline: view();
-      animation-range: entry 0% cover 34%;
-    }
-
-    .page-fold::after {
-      animation: corner-fold linear both;
-      animation-timeline: view();
-      animation-range: entry 0% cover 34%;
-    }
-  }
-
-  @keyframes sheet-fold-in {
-    0% {
-      opacity: 0.88;
-      transform: translateY(42px) rotateX(7deg) scale(0.985);
-      box-shadow: 0 -24px 50px hsl(var(--foreground) / 0.10);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0) rotateX(0) scale(1);
-      box-shadow: 0 -1px 0 hsl(var(--border) / 0.8);
-    }
-  }
-
-  @keyframes corner-fold {
-    0% {
-      opacity: 0.95;
-      transform: rotate(0deg) scale(1.28);
-    }
-    100% {
-      opacity: 0.45;
-      transform: rotate(0deg) scale(1);
+  @media (min-width: 768px) {
+    .notebook-page {
+      padding-left: 4.5rem;
     }
   }
 
   @media (max-width: 767px) {
     .notebook-page {
       background-size: 18px 18px;
-    }
-
-    .notebook-page::after {
-      @apply h-16 w-16;
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .page-fold,
-    .page-fold::after {
-      animation: none !important;
-      transform: none !important;
     }
   }
 }
