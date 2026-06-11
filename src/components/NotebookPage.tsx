@@ -25,8 +25,6 @@ const NotebookPage = ({ id, children, fold = true, className = "" }: NotebookPag
     >
       {/* Faint shared doodle layer to keep the notebook theme consistent */}
       <div className="notebook-doodles" aria-hidden="true" />
-      {/* Spiral binding (desktop) */}
-      <div className="notebook-binding" aria-hidden="true" />
       <div className="notebook-content">{children}</div>
     </motion.section>
   );
