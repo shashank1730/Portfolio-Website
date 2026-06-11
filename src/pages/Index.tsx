@@ -10,30 +10,30 @@ const Index = () => {
     <div className="min-h-screen bg-gradient-paper">
       <Navigation />
       
-      <main>
-        <section id="home">
+      <main className="notebook-stack">
+        <section id="home" className="notebook-page notebook-page-hero">
           <HeroSection />
         </section>
         
-        <section id="about">
+        <section id="about" className="notebook-page page-fold">
           <AboutSection />
         </section>
         
-        <section id="projects">
+        <section id="projects" className="notebook-page page-fold">
           <ProjectsSection />
         </section>
         
-        <section id="experience">
+        <section id="experience" className="notebook-page page-fold">
           <ExperienceSection />
         </section>
         
-        <section id="contact">
+        <section id="contact" className="notebook-page page-fold">
           <ContactSection />
         </section>
       </main>
 
       {/* Footer */}
-      <footer className="py-12 px-4 bg-card border-t-2 border-border">
+      <footer className="notebook-page page-fold py-12 px-4 bg-card border-t-2 border-border">
         <div className="container mx-auto max-w-6xl text-center">
           <div className="sketch-divider mb-8 max-w-md mx-auto" />
           <p className="font-display text-2xl text-primary font-bold">Shashank Nallabothu</p>
